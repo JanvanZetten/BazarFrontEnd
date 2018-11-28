@@ -25,3 +25,8 @@ body {
   background-color: #4CAF50;
   color: white;
 }
+
+img {
+  height: 30px;
+  width: auto;
+}
