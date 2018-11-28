@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/">
+    Petshop
+  </a>
+
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [collapse]="isCollapsed">
+
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" (click)="isCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" (click)="isCollapsed = true" routerLinkActive="active">boots</a>
+      </li>
+
+
+
+    </ul>
+
+    <button class="btn btn-outline-light my-2 my-sm-0" (click)="isCollapsed = true" routerLink="/login">Login</button>
+
+  </div>
+
+</nav>
