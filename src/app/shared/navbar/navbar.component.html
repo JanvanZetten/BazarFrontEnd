@@ -1,30 +1,35 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="/">
-    Petshop
+    <!--Top left home stuff-->
+    Højer Bazar
   </a>
 
-  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [collapse]="isCollapsed">
+  <div class="collapse navbar-collapse" id="navbarsDefault" >
 
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" (click)="isCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
       </li>
 
+
+      <!--In the routerlink add the correct page link-->
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" (click)="isCollapsed = true" routerLinkActive="active">boots</a>
+        <a class="nav-link" routerLink="/" routerLinkActive="active">boots</a>
       </li>
 
+    <!--More page link can be added here...-->
 
 
     </ul>
 
-    <button class="btn btn-outline-light my-2 my-sm-0" (click)="isCollapsed = true" routerLink="/login">Login</button>
+    <!--In the routerlink add the login page-->
+    <button class="btn btn-outline-light my-2 my-sm-0" (click)="isCollapsed = true" routerLink="/">Login</button>
 
   </div>
 
