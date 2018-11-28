@@ -37,7 +37,7 @@ export class BoothService {
 
   addBooth(booth: Booth): Observable<Booth>{
     this.setOptions();
-    return this.http.get<Booth>(this.Url, booth, httpOptions);
+    return this.http.post<Booth>(this.Url, booth, httpOptions);
   }
 
   updateBooth(booth: Booth): Observable<Booth> {
@@ -48,5 +48,10 @@ export class BoothService {
   deleteBooth(id: number): Observable<Booth> {
     this.setOptions();
     return this.http.delete<Booth>(this.Url + '/' + id, httpOptions);
+  }
+
+  bookBooth(userId: number): Observable<Booth> {
+    this.setOptions();
+    return this.http.post<Booth>(this.Url + '/book/',userId, httpOptions);
   }
 }
