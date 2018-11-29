@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ButtonsModule} from 'ngx-bootstrap';
+import {AlertModule, ButtonsModule} from 'ngx-bootstrap';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { LoginComponent } from './Login/login.component';
@@ -23,7 +23,8 @@ import { BookBoothComponent } from './booth/book-booth/book-booth.component';
     ButtonsModule,
     CollapseModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AlertModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

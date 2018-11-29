@@ -1,1 +1,7 @@
 <button class="btn btn-primary" (click)="BookBooth()" >Book a Booth</button>
+<alert *ngIf="success" type="success">
+  <strong>Successful booking</strong> You have booked booth number {{booth.id}}
+</alert>
+<alert *ngIf="error" type="warning">
+  <strong>No booth was booked</strong>
+</alert>
