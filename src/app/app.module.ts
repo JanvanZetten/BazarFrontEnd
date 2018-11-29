@@ -8,12 +8,14 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { LoginComponent } from './Login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { BookBoothComponent } from './booth/book-booth/book-booth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    BookBoothComponent
   ],
   imports: [
     BrowserModule,
