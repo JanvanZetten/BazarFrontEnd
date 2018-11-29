@@ -1,6 +1,6 @@
-import {User} from "./user";
+import {User} from './user';
 
-export class Booth{
+export class Booth {
   id: number;
-  booker: User; //if null this should be considered as not booked
+  booker: User; // if null this should be considered as not booked
 }

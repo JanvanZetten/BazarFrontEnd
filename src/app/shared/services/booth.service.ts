@@ -50,8 +50,8 @@ export class BoothService {
     return this.http.delete<Booth>(this.Url + '/' + id, httpOptions);
   }
 
-  bookBooth(userId: number): Observable<Booth> {
+  bookBooth(userName: String, token: String): Observable<Booth> {
     this.setOptions();
-    return this.http.post<Booth>(this.Url + '/book/',userId, httpOptions);
+    return this.http.post<Booth>(this.Url + '/book/',{userName, token}, httpOptions);
   }
 }
