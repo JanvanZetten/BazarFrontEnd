@@ -10,9 +10,12 @@
         </div>
         <div class="form-group">
           <label>Kodeord:</label>
-          <input type="text" class="form-control" formControlName="password" placeholder="Skriv kodeord...">
+          <input type="password" class="form-control" formControlName="password" placeholder="Skriv kodeord...">
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
+        <alert class="text-center" *ngIf="error" type="warning">
+          <strong>Login fejlede.</strong> {{errorMessage}}
+        </alert>
       </form>
     </div>
 

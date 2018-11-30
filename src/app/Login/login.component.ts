@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl('', )
   });
-  loginMessage: String;
+  error = false;
+  errorMessage: String;
 
   constructor(private loginService: LoginService, private router: Router) {
   }
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
     this.loginService.login(username, password).subscribe(sucess => {this.router.navigate(['/']); },
-        error => {this.loginMessage = error; });
+      error => {this.error = true, this.errorMessage = error.error });
   }
 
   ngOnInit() {
