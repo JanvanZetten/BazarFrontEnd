@@ -1,0 +1,9 @@
+<div class="bookbooth text-center mb-1">
+  <button class="btn btn-primary" (click)="BookBooth()" >Reserver Stand</button>
+</div>
+<alert class="text-center" *ngIf="success" type="success">
+  <strong>Succesfuld Reservation</strong> Du har reserveret stand nummer: {{booth.id}}
+</alert>
+<alert class="text-center" *ngIf="error" type="warning">
+  <strong>Der er ikke reserveret en stand</strong> {{errorMessage}}
+</alert>
