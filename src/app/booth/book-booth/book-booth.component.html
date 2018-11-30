@@ -5,5 +5,5 @@
   <strong>Succesfuld Reservation</strong> Du har reserveret stand nummer: {{booth.id}}
 </alert>
 <alert class="text-center" *ngIf="error" type="warning">
-  <strong>Der er ikke reserveret en stand</strong>
+  <strong>Der er ikke reserveret en stand</strong> {{errorMessage}}
 </alert>
