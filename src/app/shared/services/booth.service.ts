@@ -18,6 +18,7 @@ const httpOptions = {
 export class BoothService {
   Url = environment.apiUrl + '/booths';
 
+
   constructor(private http: HttpClient, private authenticationService: LoginService) { }
 
   private setOptions() {
@@ -50,9 +51,9 @@ export class BoothService {
     return this.http.delete<Booth>(this.Url + '/' + id, httpOptions);
   }
 
-  bookBooth(userName: String, token: String): Observable<Booth> {
-    //console.log(token);
+  bookBooth(userName: string, token: string): Observable<Booth> {
+
     this.setOptions();
-    return this.http.post<Booth>(this.Url + '/book', token, httpOptions);
+    return this.http.post<Booth>(this.Url + '/book',"\"" + token + "\"", httpOptions);
   }
 }
