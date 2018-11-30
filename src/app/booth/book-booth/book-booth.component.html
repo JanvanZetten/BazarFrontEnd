@@ -1,9 +1,9 @@
-<div class="bookbooth text-center">
-  <button class="btn btn-primary" (click)="BookBooth()" >Book a Booth</button>
+<div class="bookbooth text-center mb-1">
+  <button class="btn btn-primary" (click)="BookBooth()" >Reserver Stand</button>
 </div>
-<alert *ngIf="success" type="success">
-  <strong>Successful booking</strong> You have booked booth number {{booth.id}}
+<alert class="text-center" *ngIf="success" type="success">
+  <strong>Succesfuld Reservation</strong> Du har reserveret stand nummer: {{booth.id}}
 </alert>
-<alert *ngIf="error" type="warning">
-  <strong>No booth was booked</strong>
+<alert class="text-center" *ngIf="error" type="warning">
+  <strong>Der er ikke reserveret en stand</strong>
 </alert>
