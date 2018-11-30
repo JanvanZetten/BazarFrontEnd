@@ -1,4 +1,6 @@
-<button class="btn btn-primary" (click)="BookBooth()" >Book a Booth</button>
+<div class="text-center">
+  <button class="btn btn-primary" (click)="BookBooth()" >Book a Booth</button>
+</div>
 <alert *ngIf="success" type="success">
   <strong>Successful booking</strong> You have booked booth number {{booth.id}}
 </alert>
