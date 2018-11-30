@@ -51,7 +51,8 @@ export class BoothService {
   }
 
   bookBooth(userName: String, token: String): Observable<Booth> {
+    //console.log(token);
     this.setOptions();
-    return this.http.post<Booth>(this.Url + '/book/',{userName, token}, httpOptions);
+    return this.http.post<Booth>(this.Url + '/book', token, httpOptions);
   }
 }
