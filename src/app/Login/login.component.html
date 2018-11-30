@@ -1,11 +1,21 @@
-<form [formGroup]="loginForm" (ngSubmit)="Login()">
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control" formControlName="username"   placeholder="Enter username">
+<div class="text-center mb-1">
+
+  <div class="row">
+
+    <div class="col-centered" style="width: 300px; text-align: center;">
+      <form [formGroup]="loginForm" (ngSubmit)="Login()">
+        <div class="form-group">
+          <label>Brugernavn:</label>
+          <input type="text" class="form-control" formControlName="username" placeholder="Skriv brugernavn...">
+        </div>
+        <div class="form-group">
+          <label>Kodeord:</label>
+          <input type="text" class="form-control" formControlName="password" placeholder="Skriv kodeord...">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+
+
   </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="text" class="form-control" formControlName="password" placeholder="Enter password">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
