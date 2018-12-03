@@ -13,9 +13,13 @@ booth: Booth;
 error = false;
 success = false;
 errorMessage: String;
+numberOfNonbookedBooths: number;
+
+
   constructor(private boothService: BoothService, private loginService: LoginService) { }
 
   ngOnInit() {
+    this.boothService.getAvalibleBoothsCount().subscribe(count => this.numberOfNonbookedBooths = count);
   }
 
   BookBooth() {
