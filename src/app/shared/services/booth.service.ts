@@ -56,6 +56,16 @@ export class BoothService {
     return this.http.post<Booth>(this.Url + '/book',"\"" + token + "\"", httpOptions);
   }
 
+  getUserReservation(token: string): Observable<Booth> {
+    this.setOptions();
+    return this.http.post<Booth>(this.Url + '/reservation',"\"" + token + "\"", httpOptions);
+  }
+
+  cancelReservation(boothId: number, token: string): Observable<Booth> {
+    this.setOptions();
+    return this.http.post<Booth>(this.Url + '/cancelreservation',{id: boothId, token: token}, httpOptions);
+  }
+
   getAvalibleBoothsCount(): Observable<number>{
     this.setOptions();
     return this.http.get<number>(this.Url + '/availableCount', httpOptions);

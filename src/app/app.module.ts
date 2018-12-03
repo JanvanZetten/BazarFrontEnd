@@ -2,20 +2,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {AlertModule, ButtonsModule} from 'ngx-bootstrap';
+import {
+  AlertModule,
+  BsModalService,
+  ButtonsModule,
+  ComponentLoaderFactory,
+  ModalBackdropComponent, ModalDirective, ModalModule,
+  PositioningService
+} from 'ngx-bootstrap';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { LoginComponent } from './Login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BookBoothComponent } from './booth/book-booth/book-booth.component';
+import { ShowReservationBoothComponent } from './booth/show-reservation-booth/show-reservation-booth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    BookBoothComponent
+    BookBoothComponent,
+    ShowReservationBoothComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +33,13 @@ import { BookBoothComponent } from './booth/book-booth/book-booth.component';
     CollapseModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    ModalModule
   ],
-  providers: [],
+  providers: [BsModalService,
+    ComponentLoaderFactory,
+    PositioningService,
+    ModalBackdropComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
