@@ -52,8 +52,12 @@ export class BoothService {
   }
 
   bookBooth(userName: string, token: string): Observable<Booth> {
-
     this.setOptions();
     return this.http.post<Booth>(this.Url + '/book',"\"" + token + "\"", httpOptions);
+  }
+
+  getAvalibleBoothsCount(): Observable<number>{
+    this.setOptions();
+    return this.http.get<number>(this.Url + '/availableCount', httpOptions);
   }
 }
