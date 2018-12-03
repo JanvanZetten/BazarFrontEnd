@@ -9,13 +9,15 @@ import { LoginComponent } from './Login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BookBoothComponent } from './booth/book-booth/book-booth.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    BookBoothComponent
+    BookBoothComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
