@@ -1,3 +1,15 @@
+
+<div class="text-center">
+<h4 *ngIf="numberOfNonbookedBooths > 1">Der er {{numberOfNonbookedBooths}} stande fri</h4>
+
+
+<h4 *ngIf="numberOfNonbookedBooths === 1" > Der er {{numberOfNonbookedBooths}} stand fri </h4>
+
+
+<h4 *ngIf="numberOfNonbookedBooths < 1">Der er ingen stande fri men du kan komme på venteliste</h4>
+</div>
+
+
 <div class="bookbooth text-center mb-1">
   <button class="btn btn-primary" (click)="BookBooth()" >Reserver Stand</button>
 </div>
@@ -7,3 +19,4 @@
 <alert class="text-center" *ngIf="error" type="warning">
   <strong>Der er ikke reserveret en stand</strong> {{errorMessage}}
 </alert>
+

@@ -60,4 +60,9 @@ export class BoothService {
     this.setOptions();
     return this.http.post<Booth>(this.Url + '/', "\"" + this.authenticationService.getToken() + "\"", httpOptions);
   }
+    
+  getAvalibleBoothsCount(): Observable<number>{
+    this.setOptions();
+    return this.http.get<number>(this.Url + '/availableCount', httpOptions);
+  }
 }
