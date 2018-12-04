@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { BookBoothComponent } from './booth/book-booth/book-booth.component';
 import { ShowReservationBoothComponent } from './booth/show-reservation-booth/show-reservation-booth.component';
 import { BookingComponent } from './booking/booking.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BookingComponent } from './booking/booking.component';
     LoginComponent,
     BookBoothComponent,
     ShowReservationBoothComponent,
-    BookingComponent
+    BookingComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
