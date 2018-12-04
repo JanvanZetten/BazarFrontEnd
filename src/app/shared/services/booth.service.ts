@@ -58,7 +58,7 @@ export class BoothService {
 
   getUsersBooking(): Observable<Booth> {
     this.setOptions();
-    return this.http.post<Booth>(this.Url + '/', "\"" + this.authenticationService.getToken() + "\"", httpOptions);
+    return this.http.post<Booth>(this.Url + '/usersBooking', "\"" + this.authenticationService.getToken() + "\"", httpOptions);
   }
 
   getAvalibleBoothsCount(): Observable<number>{
