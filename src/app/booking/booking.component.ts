@@ -10,10 +10,15 @@ import {Booth} from '../shared/model/booth';
 export class BookingComponent implements OnInit {
 
   booth: Booth;
+  error = true;
+  errorMessage: String;
   constructor(private boothService: BoothService) { }
 
   ngOnInit() {
-    this.boothService.getUsersBooking();
+    this.boothService.getUsersBooking().subscribe(o => (this.booth = o, this.error = false),
+      error => {this.error = true, this.errorMessage = error.error});
   }
+
+
 
 }

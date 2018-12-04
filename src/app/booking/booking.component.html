@@ -1,3 +1,5 @@
 <div>
-  <h3>{{booth.id}}</h3>
+  <h3 *ngIf="error">{{errorMessage}}</h3>
+  <h3 *ngIf="(!error) && (booth != null)">{{booth.id}}</h3>
+  <h3 *ngIf="(!error) && (booth == null)">Der er ingen reservation.</h3>
 </div>
