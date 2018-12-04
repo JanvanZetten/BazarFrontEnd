@@ -25,6 +25,6 @@ numberOfNonbookedBooths: number;
   BookBooth() {
     this.boothService.bookBooth(this.loginService.getUsername(), this.loginService.getToken()).
     subscribe(booth => {this.booth = booth, this.success = true; },
-        error => {this.error = true, this.errorMessage = error.error });
+        error => {this.error = true, this.errorMessage = error.error});
   }
 }
