@@ -1,4 +1,4 @@
-<div *ngIf="boothBooked" class="bookbooth text-center mb-1">
+<div class="bookbooth text-center mb-1">
   <button class="btn btn-primary" (click)="openModal(template)" >Annuller booking</button>
 </div>
 <alert class="text-center" *ngIf="success" type="success">
@@ -9,9 +9,17 @@
 </alert>
 
 <ng-template #template>
-  <div class="modal-body text-center">
+  <div class="modal-header">
+    <h5 class="modal-title">Annuller booking</h5>
+    <button type="button" class="close" (click)="decline()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
     <p>Er du sikker på at du vil annullere din booking?</p>
-    <button type="button" class="btn btn-default" (click)="confirm()" >Ja</button>
-    <button type="button" class="btn btn-primary" (click)="decline()" >Nej</button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary w-100" (click)="decline()">Nej</button>
+    <button type="button" class="btn btn-danger w-100" (click)="confirm()">Ja</button>
   </div>
 </ng-template>
