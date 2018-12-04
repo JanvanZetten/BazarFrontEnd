@@ -70,4 +70,11 @@ export class BoothService {
     this.setOptions();
     return this.http.get<number>(this.Url + '/availableCount', httpOptions);
   }
+
+  getUsersPositionInWaitingList(): Observable<number> {
+    this.setOptions();
+    return this.http.post<number>(this.Url + '/waitinglistPosition',
+      "\"" + this.authenticationService.getToken() + "\"",
+      httpOptions);
+  }
 }
