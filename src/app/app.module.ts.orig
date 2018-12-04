@@ -16,8 +16,11 @@ import { LoginComponent } from './Login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BookBoothComponent } from './booth/book-booth/book-booth.component';
+<<<<<<< HEAD
 import { ShowReservationBoothComponent } from './booth/show-reservation-booth/show-reservation-booth.component';
+=======
 import { BookingComponent } from './booking/booking.component';
+>>>>>>> development
 
 @NgModule({
   declarations: [
@@ -25,8 +28,11 @@ import { BookingComponent } from './booking/booking.component';
     NavbarComponent,
     LoginComponent,
     BookBoothComponent,
-    ShowReservationBoothComponent,
+<<<<<<< HEAD
+    ShowReservationBoothComponent
+=======
     BookingComponent
+>>>>>>> development
   ],
   imports: [
     BrowserModule,

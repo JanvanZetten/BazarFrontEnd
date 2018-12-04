@@ -56,11 +56,7 @@ export class BoothService {
     return this.http.post<Booth>(this.Url + '/book',"\"" + token + "\"", httpOptions);
   }
 
-  getUsersBooking(): Observable<Booth> {
-    this.setOptions();
-    return this.http.post<Booth>(this.Url + '/reservation', "\"" + this.authenticationService.getToken() + "\"", httpOptions);
-  }
-
+<<<<<<< HEAD
   getUserReservation(token: string): Observable<Booth> {
     this.setOptions();
     return this.http.post<Booth>(this.Url + '/reservation',"\"" + token + "\"", httpOptions);
@@ -69,11 +65,11 @@ export class BoothService {
   cancelReservation(boothId: number, token: string): Observable<Booth> {
     this.setOptions();
     return this.http.post<Booth>(this.Url + '/cancelreservation',{id: boothId, token: token}, httpOptions);
-  }
-  
-  cancelReservation(boothId: number, token: string): Observable<Booth> {
+=======
+  getUsersBooking(): Observable<Booth> {
     this.setOptions();
-    return this.http.post<Booth>(this.Url + '/cancelreservation',{id: boothId, token: token}, httpOptions);
+    return this.http.post<Booth>(this.Url + '/reservation', "\"" + this.authenticationService.getToken() + "\"", httpOptions);
+>>>>>>> development
   }
 
   getAvalibleBoothsCount(): Observable<number>{
