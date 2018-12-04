@@ -1,5 +1,8 @@
-<div>
+<div class="text-center">
   <h3 *ngIf="error">{{errorMessage}}</h3>
-  <h3 *ngIf="(!error) && (booth != null)">{{booth.id}}</h3>
-  <h3 *ngIf="(!error) && (booth == null)">Der er ingen reservation.</h3>
+  <h3 *ngIf="(!error) && (booth != null)">Du har stand nummer: {{booth.id}}</h3>
+  <h3 *ngIf="(!error) && (booth == null) && (numberInWaitingList < 1)">Der er ingen reservation.</h3>
+  <h3 *ngIf="(!error) && (booth == null) && (numberInWaitingList >= 1)">
+    Der er ingen reservation. Men du er nummer {{numberInWaitingList}} i køen.
+  </h3>
 </div>
