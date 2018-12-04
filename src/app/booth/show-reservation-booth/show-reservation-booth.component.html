@@ -1,4 +1,4 @@
-<div class="bookbooth text-center mb-1">
+<div *ngIf="boothBooked" class="bookbooth text-center mb-1">
   <button class="btn btn-primary" (click)="openModal(template)" >Annuller booking</button>
 </div>
 <alert class="text-center" *ngIf="success" type="success">
