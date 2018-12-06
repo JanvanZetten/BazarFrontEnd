@@ -8,8 +8,8 @@ import {Booth} from '../shared/model/booth';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-
-  booth: Booth;
+  
+  booths:Booth[];
   error = true;
   errorMessage: string;
   numberInWaitingList = -1;
@@ -17,7 +17,7 @@ export class BookingComponent implements OnInit {
   constructor(private boothService: BoothService) { }
 
   ngOnInit() {
-    this.boothService.getUsersBooking().subscribe(o => {this.booth = o, this.error = false},
+    this.boothService.getUsersBooking().subscribe(booths => {this.booths = booths, this.error = false},
       error => {this.errorMessage = error.error});
 
     this.boothService.getUsersPositionInWaitingList().subscribe(

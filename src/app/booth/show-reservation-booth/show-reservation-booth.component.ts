@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {BoothService} from '../../shared/services/booth.service';
 import {Booth} from '../../shared/model/booth';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -10,7 +10,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   styleUrls: ['./show-reservation-booth.component.css']
 })
 export class ShowReservationBoothComponent implements OnInit {
-  boothBooked: Booth;
+  @Input() public boothId;
+  boothBooked: Booth[];
   error = false;
   success = false;
   errorMessage: String;
@@ -28,7 +29,7 @@ export class ShowReservationBoothComponent implements OnInit {
   }
 
   confirm() {
-    this.boothService.cancelReservation(this.boothBooked.id).
+    this.boothService.cancelReservation(this.boothId).
     subscribe(booth => { this.success = true; this.modalRef.hide();},
       error => { this.error = true; this.errorMessage = error.error; this.modalRef.hide();});
   }

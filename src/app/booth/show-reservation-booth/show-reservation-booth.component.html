@@ -2,7 +2,7 @@
   <button class="btn btn-primary" (click)="openModal(template)" >Annuller booking</button>
 </div>
 <alert class="text-center" *ngIf="success" type="success">
-  <strong>Succesfuld Annullering</strong> Det lykkedes at annullere bord nummer: {{boothBooked.id}}
+  <strong>Succesfuld Annullering</strong> Det lykkedes at annullere bord nummer: {{boothId}}
 </alert>
 <alert class="text-center" *ngIf="error" type="warning">
   <strong>Reservationen af standen blev ikke annulleret</strong> {{errorMessage}}
