@@ -30,8 +30,7 @@ export class CreateUserComponent implements OnInit {
               this.router.navigate(['/']);
             },
             error => {
-              this.errorMessage = error.error, this.error = true,
-                console.log(error);
+              this.errorMessage = error.error, this.error = true
             });
       }
       else {
