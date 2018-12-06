@@ -1,11 +1,21 @@
 <div class="text-center">
   <h3 *ngIf="error">{{errorMessage}}</h3>
-  <div *ngIf="(!error) && (booth != null)">
-    <h3>Du har stand nummer: {{booth.id}}</h3>
-    <app-show-reservation-booth></app-show-reservation-booth>
+  <div *ngIf="(!error) && (booths != null)">
+    <div class="card-deck">
+    <li class="cardList" *ngFor="let booth of booths" style="list-style-type: none;" >
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="http://localhost:4200/assets/img/UnnaturalOwl.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Stand nummer: {{booth.id}}</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <app-show-reservation-booth [boothId]="booth.id"></app-show-reservation-booth>
+        </div>
+      </div>
+    </li>
   </div>
-  <h3 *ngIf="(!error) && (booth == null) && (numberInWaitingList < 1)">Der er ingen reservation.</h3>
-  <div *ngIf="(!error) && (booth == null) && (numberInWaitingList >= 1)">
+  </div>
+  <h3 *ngIf="(!error) && (booths == null) && (numberInWaitingList < 1)">Der er ingen reservation.</h3>
+  <div *ngIf="(!error) && (booths == null) && (numberInWaitingList >= 1)">
     <h3>
     Der er ingen reservation. Men du er nummer {{numberInWaitingList}} i køen.
     </h3>
