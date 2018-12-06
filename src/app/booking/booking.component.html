@@ -5,7 +5,10 @@
     <app-show-reservation-booth></app-show-reservation-booth>
   </div>
   <h3 *ngIf="(!error) && (booth == null) && (numberInWaitingList < 1)">Der er ingen reservation.</h3>
-  <h3 *ngIf="(!error) && (booth == null) && (numberInWaitingList >= 1)">
+  <div *ngIf="(!error) && (booth == null) && (numberInWaitingList >= 1)">
+    <h3>
     Der er ingen reservation. Men du er nummer {{numberInWaitingList}} i køen.
-  </h3>
+    </h3>
+    <app-show-waiting-position></app-show-waiting-position>
+  </div>
 </div>

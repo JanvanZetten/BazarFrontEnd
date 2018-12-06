@@ -1,0 +1,25 @@
+<div class="text-center mb-1">
+  <button class="btn btn-primary" (click)="openModal(template)" >Annuller position</button>
+</div>
+<alert class="text-center" *ngIf="success" type="success">
+  <strong>Succesfuld Annullering</strong> Det lykkedes at annullere din position i ventelisten
+</alert>
+<alert class="text-center" *ngIf="error" type="warning">
+  <strong>Positionen blev ikke annulleret</strong> {{errorMessage}}
+</alert>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h5 class="modal-title">Annuller position</h5>
+    <button type="button" class="close" (click)="decline()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Er du sikker på at du vil annullere din position?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary w-100" (click)="decline()">Nej</button>
+    <button type="button" class="btn btn-danger w-100" (click)="confirm()">Ja</button>
+  </div>
+</ng-template>
