@@ -19,6 +19,7 @@ import { BookBoothComponent } from './booth/book-booth/book-booth.component';
 import { ShowReservationBoothComponent } from './booth/show-reservation-booth/show-reservation-booth.component';
 import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
+import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show-waiting-position.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HomeComponent } from './home/home.component';
     BookBoothComponent,
     ShowReservationBoothComponent,
     BookingComponent,
-    HomeComponent
+    HomeComponent,
+    ShowWaitingPositionComponent
   ],
   imports: [
     BrowserModule,

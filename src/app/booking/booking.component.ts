@@ -30,17 +30,6 @@ export class BookingComponent implements OnInit {
     );
 
   }
-  cancelWaitingListPosition()
-  {
-    this.boothService.cancelWaitingListPosition().subscribe(msg => {
-        this.message = msg, this.error = false
-      },
-      error => {
-        if (this.error == null) {
-          this.errorMessage = error.error,
-            this.error = true;
-        }
-      });
-  }
+
 
 }
