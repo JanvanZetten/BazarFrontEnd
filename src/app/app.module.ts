@@ -19,6 +19,7 @@ import { BookBoothComponent } from './booth/book-booth/book-booth.component';
 import { ShowReservationBoothComponent } from './booth/show-reservation-booth/show-reservation-booth.component';
 import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show-waiting-position.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show
     ShowReservationBoothComponent,
     BookingComponent,
     HomeComponent,
+    CreateUserComponent,
     ShowWaitingPositionComponent
   ],
   imports: [
