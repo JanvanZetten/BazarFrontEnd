@@ -10,7 +10,6 @@ import {CreateUserComponent} from "./create-user/create-user.component";
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'booths', component: BookBoothComponent},
-    {path: 'cancel', component: ShowReservationBoothComponent},
     {path: 'user', component: BookingComponent},
     {path: '', component: HomeComponent},
     {path: 'createUser', component: CreateUserComponent}
