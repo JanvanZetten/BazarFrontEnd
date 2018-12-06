@@ -77,4 +77,10 @@ export class BoothService {
       "\"" + this.authenticationService.getToken() + "\"",
       httpOptions);
   }
+  cancelWaitingListPosition(): Observable<any>
+  {
+    this.setOptions();
+    return this.http.post<any>(this.Url + '/cancelWaitingPosition',
+      {token: this.authenticationService.getToken()}, httpOptions)
+  }
 }

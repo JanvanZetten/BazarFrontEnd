@@ -11,8 +11,9 @@ export class BookingComponent implements OnInit {
 
   booth: Booth;
   error = true;
-  errorMessage: String;
+  errorMessage: string;
   numberInWaitingList = -1;
+  message: string;
   constructor(private boothService: BoothService) { }
 
   ngOnInit() {
@@ -27,5 +28,19 @@ export class BookingComponent implements OnInit {
         }
       }
     );
+
   }
+  cancelWaitingListPosition()
+  {
+    this.boothService.cancelWaitingListPosition().subscribe(msg => {
+        this.message = msg, this.error = false
+      },
+      error => {
+        if (this.error == null) {
+          this.errorMessage = error.error,
+            this.error = true;
+        }
+      });
+  }
+
 }
