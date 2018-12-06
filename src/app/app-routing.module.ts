@@ -9,7 +9,6 @@ import {HomeComponent} from "./home/home.component";
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'booths', component: BookBoothComponent},
-    {path: 'cancel', component: ShowReservationBoothComponent},
     {path: 'user', component: BookingComponent},
     {path: '', component: HomeComponent}
     ];
