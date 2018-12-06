@@ -1,24 +1,20 @@
-<div class="text-center mb-1">
-
-  <div class="row">
-
-    <div class="col-centered" style="width: 300px; text-align: center;">
-      <form [formGroup]="loginForm" (ngSubmit)="Login()">
-        <div class="form-group">
-          <label>Brugernavn:</label>
-          <input type="text" class="form-control" formControlName="username" placeholder="Skriv brugernavn...">
-        </div>
-        <div class="form-group">
-          <label>Kodeord:</label>
-          <input type="password" class="form-control" formControlName="password" placeholder="Skriv kodeord...">
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-        <alert class="text-center" *ngIf="error" type="warning">
-          <strong>Login fejlede.</strong> {{errorMessage}}
-        </alert>
-      </form>
+<div class="mx-auto" style="width: 300px; text-align: center;">
+  <form [formGroup]="loginForm" (ngSubmit)="Login()">
+    <div class="form-group">
+      <label>Brugernavn:</label>
+      <input type="text" class="form-control" formControlName="username" placeholder="Skriv brugernavn...">
+    </div>
+    <div class="form-group">
+      <label>Kodeord:</label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Skriv kodeord...">
     </div>
 
+    <button type="submit" class="btn btn-primary mb-3">Login</button>
+    <alert class="text-center" *ngIf="error" type="warning">
+      <strong>Login fejlede.</strong> {{errorMessage}}
+    </alert>
 
-  </div>
+    <p><a routerLink="/createUser">Opret bruger</a></p>
+
+  </form>
 </div>

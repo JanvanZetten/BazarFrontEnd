@@ -1,0 +1,28 @@
+<h3 class="text-center">Opret bruger:</h3>
+
+<div class="mx-auto" style="width: 300px; text-align: center;">
+
+  <form [formGroup]="addUserLoginForm" (ngSubmit)="AddLogin()">
+
+    <div class="form-group">
+      <label>Brugernavn:</label>
+      <input type="text" class="form-control" formControlName="username" placeholder="Brugernavn...">
+    </div>
+    <div class="form-group">
+      <label>Kodeord:</label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Kodeord...">
+    </div>
+    <div class="form-group">
+      <label>Gentag kodeord:</label>
+      <input type="password" class="form-control" formControlName="passwordRepeated" placeholder="Gentag kodeord...">
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-2">Opret bruger</button>
+
+    <alert class="text-center" *ngIf="error" type="danger">
+      <strong>Det var ikke muligt at oprette din bruger.</strong> {{errorMessage}}
+    </alert>
+
+  </form>
+
+</div>
