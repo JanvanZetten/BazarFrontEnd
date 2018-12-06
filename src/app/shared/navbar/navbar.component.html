@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 
   <a routerLink="/" class="navbar-left">
-    <img src="assets/img/bazarOwl.png">
+    <img src="assets/img/UnnaturalOwl.png">
     <div class="navbar-brand">
       Højer Bazar
     </div>
@@ -23,11 +23,15 @@
         </a>
       </li>
 
-
-     
       <li class="nav-item">
         <a class="nav-link" routerLink="/booths" (click)="isCollapsed = true" routerLinkActive="active">
           Reserver Stand
+        </a>
+      </li>
+
+      <li *ngIf="getTokenExists()" class="nav-item">
+        <a class="nav-link" routerLink="/user" (click)="isCollapsed = true" routerLinkActive="active">
+          Profil
         </a>
       </li>
 

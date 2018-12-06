@@ -52,8 +52,35 @@ export class BoothService {
   }
 
   bookBooth(userName: string, token: string): Observable<Booth> {
-
     this.setOptions();
     return this.http.post<Booth>(this.Url + '/book',"\"" + token + "\"", httpOptions);
+  }
+
+  getUsersBooking(): Observable<Booth> {
+    this.setOptions();
+    return this.http.post<Booth>(this.Url + '/reservation', "\"" + this.authenticationService.getToken() + "\"", httpOptions);
+  }
+
+  cancelReservation(boothId: number): Observable<Booth> {
+    this.setOptions();
+    return this.http.post<Booth>(this.Url + '/cancelreservation',{id: boothId, token: this.authenticationService.getToken()}, httpOptions);
+  }
+
+  getAvalibleBoothsCount(): Observable<number>{
+    this.setOptions();
+    return this.http.get<number>(this.Url + '/availableCount', httpOptions);
+  }
+
+  getUsersPositionInWaitingList(): Observable<number> {
+    this.setOptions();
+    return this.http.post<number>(this.Url + '/waitinglistPosition',
+      "\"" + this.authenticationService.getToken() + "\"",
+      httpOptions);
+  }
+  cancelWaitingListPosition(): Observable<any>
+  {
+    this.setOptions();
+    return this.http.post<any>(this.Url + '/cancelWaitingPosition',
+      {token: this.authenticationService.getToken()}, httpOptions)
   }
 }
