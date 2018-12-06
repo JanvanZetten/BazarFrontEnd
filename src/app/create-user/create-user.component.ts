@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {RegisterService} from "../shared/services/register.service";
 
 @Component({
   selector: 'app-create-user',
@@ -15,14 +16,14 @@ export class CreateUserComponent implements OnInit {
   error = false;
   errorMessage: String;
 
-  constructor() { }
+  constructor(private registerService: RegisterService) { }
 
   ngOnInit() {
   }
 
   AddLogin() {
     if (this.addUserLoginForm.get('password').value === this.addUserLoginForm.get('passwordRepeated').value){
-      //take the username and the password and add login
+      this.registerService.newUser(this.addUserLoginForm.get('username').value, this.addUserLoginForm.get('password').value);
     }
 
   }
