@@ -23,7 +23,6 @@ export class ConfirmationModalComponent implements OnInit {
   }
 
   confirm() {
-    console.log("Modal confirm");
     this.confirmed.emit(true);
     this.modalRef.hide();
   }

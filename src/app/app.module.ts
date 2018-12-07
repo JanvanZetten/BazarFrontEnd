@@ -25,6 +25,7 @@ import { BoothListComponent } from './admin/booth/booth-list/booth-list.componen
 import { UserListComponent } from './admin/user/user-list/user-list.component';
 import { BoothDeleteComponent } from './admin/booth/booth-delete/booth-delete.component';
 import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
+import { UserDeleteComponent } from './admin/user/user-delete/user-delete.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ConfirmationModalComponent } from './shared/confirmation-modal/confirma
     BoothListComponent,
     UserListComponent,
     BoothDeleteComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    UserDeleteComponent
   ],
   imports: [
     BrowserModule,

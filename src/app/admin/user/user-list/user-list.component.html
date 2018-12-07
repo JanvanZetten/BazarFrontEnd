@@ -3,15 +3,17 @@
   <tr>
     <th scope="col">#</th>
     <th scope="col" class="text-left">Username</th>
+    <th scope="col"></th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let user of users">
     <th scope="row">{{user.id}}</th>
     <td>{{user.username}}</td>
+    <td><app-user-delete [userId]="user.id" (deleted)="messageHandler($event)"></app-user-delete></td>
   </tr>
   </tbody>
 </table>
-<div *ngIf="!users">
+<div *ngIf="errorOccured">
   <p>{{errorMessage}}.</p>
 </div>
