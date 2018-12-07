@@ -11,10 +11,10 @@
     <th scope="row">{{booth.id}}</th>
     <td *ngIf="booth.booker">{{booth.booker.username}}</td>
     <td *ngIf="!booth.booker">Ledig</td>
-    <td><app-booth-delete [boothId]="booth.id" (deleted)="messageHandler($event)"></app-booth-delete></td>
+    <td><app-booth-delete [boothId]="booth.id" (deleted)="alertHandler($event)"></app-booth-delete></td>
   </tr>
   </tbody>
 </table>
-<div *ngIf="errorOccured">
-  <p>{{errorMessage}}.</p>
+<div *ngFor="let alert of alerts">
+  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
 </div>

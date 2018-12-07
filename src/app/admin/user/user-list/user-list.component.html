@@ -10,10 +10,10 @@
   <tr *ngFor="let user of users">
     <th scope="row">{{user.id}}</th>
     <td>{{user.username}}</td>
-    <td><app-user-delete [userId]="user.id" (deleted)="messageHandler($event)"></app-user-delete></td>
+    <td><app-user-delete [userId]="user.id" (deleted)="alertHandler($event)"></app-user-delete></td>
   </tr>
   </tbody>
 </table>
-<div *ngIf="errorOccured">
-  <p>{{errorMessage}}.</p>
+<div *ngFor="let alert of alerts">
+  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
 </div>
