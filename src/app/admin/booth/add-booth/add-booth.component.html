@@ -1,0 +1,9 @@
+<div>
+  <form [formGroup]="boothForm" (ngSubmit)="addBooth()">
+    <label>
+      Mængde af stande:
+      <input type="number" placeholder="Mængde af stande" formControlName="amount">
+    </label>
+  </form>
+  <button (click)="addBooth()" type="submit">Tilføj stande</button>
+</div>
