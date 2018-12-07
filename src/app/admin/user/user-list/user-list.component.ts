@@ -22,10 +22,6 @@ export class UserListComponent implements OnInit {
     this.refresh();
   }
 
-  ngOnInit() {
-    this.refresh();
-  }
-
   refresh() {
     this.errorOccured = false;
 
