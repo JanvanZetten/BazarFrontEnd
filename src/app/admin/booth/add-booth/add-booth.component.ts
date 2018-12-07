@@ -15,6 +15,8 @@ export class AddBoothComponent implements OnInit {
     amount: new FormControl(1),
     booker: new FormControl('')
   });
+  errorBool = false;
+  error;string;
 
 
   constructor(private boothService: BoothService) { }
@@ -22,17 +24,21 @@ export class AddBoothComponent implements OnInit {
   ngOnInit() {}
 
   addBooth() {
-    let amount = this.boothForm.get('amount').value;
-    let booker = this.boothForm.get('booker').value;
+    let boothForm:any = this.boothForm.value;
 
-    for (let i = 0; i < amount; i++) {
+    for (let i = 0; i < boothForm.amount; i++) {
       let booth = new Booth();
-      if (booker > 0) {
+      if (boothForm.booker > 0) {
         let user = new User();
-        user.id = booker;
+        user.id = boothForm.booker;
         booth.booker = user;
+        if(this.errorBool == true)
+        {
+          break;
+        }
       }
-      this.boothService.addBooth(booth).subscribe();
+      this.boothService.addBooth(booth).subscribe( m =>{}, e => {this.errorBool = true, this.error = e.error});
+
     }
   }
 }
