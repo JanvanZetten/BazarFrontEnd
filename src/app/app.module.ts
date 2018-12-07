@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show-waiting-position.component';
 import { BoothListComponent } from './admin/booth/booth-list/booth-list.component';
+import { UserListComponent } from './admin/user/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BoothListComponent } from './admin/booth/booth-list/booth-list.componen
     HomeComponent,
     CreateUserComponent,
     ShowWaitingPositionComponent,
-    BoothListComponent
+    BoothListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
