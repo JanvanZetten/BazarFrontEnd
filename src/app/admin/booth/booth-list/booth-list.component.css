@@ -1,0 +1,12 @@
+.table {
+  outline: solid darkgrey 1px;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #f8f9fa;
+}
+
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+  background-color: #E8E8E8;
+  cursor: pointer;
+}

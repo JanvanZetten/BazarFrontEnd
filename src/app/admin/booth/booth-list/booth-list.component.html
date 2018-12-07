@@ -1,0 +1,15 @@
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Booker</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let booth of booths">
+    <th scope="row">{{booth.id}}</th>
+    <td *ngIf="booth.booker">{{booth.booker.username}}</td>
+    <td *ngIf="!booth.booker">Ledig</td>
+  </tr>
+  </tbody>
+</table>
