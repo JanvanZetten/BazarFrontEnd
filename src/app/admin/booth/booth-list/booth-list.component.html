@@ -3,6 +3,7 @@
   <tr>
     <th scope="col">#</th>
     <th scope="col" class="text-left">Booker</th>
+    <th scope="col"></th>
   </tr>
   </thead>
   <tbody>
@@ -10,9 +11,10 @@
     <th scope="row">{{booth.id}}</th>
     <td *ngIf="booth.booker">{{booth.booker.username}}</td>
     <td *ngIf="!booth.booker">Ledig</td>
+    <td><app-booth-delete [boothId]="booth.id" (deleted)="messageHandler($event)"></app-booth-delete></td>
   </tr>
   </tbody>
 </table>
-<div *ngIf="!booths">
+<div *ngIf="errorOccured">
   <p>{{errorMessage}}.</p>
 </div>

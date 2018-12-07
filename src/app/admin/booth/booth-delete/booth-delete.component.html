@@ -1,0 +1,2 @@
+<button class="btn btn-danger" (click)="confirmation.open()">Slet</button>
+<app-confirmation-modal #confirmation [title]="modalTitle" [body]="modalBody" (confirmed)="delete()"></app-confirmation-modal>
