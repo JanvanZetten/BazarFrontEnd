@@ -9,7 +9,7 @@ import {BoothService} from "../../../shared/services/booth.service";
 })
 export class BoothListComponent implements OnInit {
   booths: Booth[]
-  errorMessage: string;
+  errorMessage: string = "Der er sket en fejl";
 
   constructor(private boothService: BoothService) { }
 
