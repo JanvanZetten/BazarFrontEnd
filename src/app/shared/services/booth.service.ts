@@ -31,6 +31,11 @@ export class BoothService {
     return this.http.get<Booth[]>(this.Url, httpOptions);
   }
 
+  getBoothsIncludeAll(): Observable<Booth[]> {
+    this.setOptions();
+    return this.http.get<Booth[]>(this.Url + "/includeAll", httpOptions);
+  }
+
   getBooth(id: number): Observable<Booth>{
     this.setOptions();
     return this.http.get<Booth>(this.Url + "/" + id, httpOptions);
