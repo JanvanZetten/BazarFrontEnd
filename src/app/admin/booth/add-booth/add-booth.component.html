@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="boothForm">
+  <form [formGroup]="boothForm" (ngSubmit)="addBooth()">
     <label>
       !!!! Hvis standen ikke skal have en standholder, så undlad at sætte noget ind i feltet.
       <br>
@@ -11,6 +11,6 @@
       Mængde af stande
       <input type="number" placeholder="Mængde af stande" formControlName="amount">
     </label>
+    <button class="btn btn-primary" type="submit">Tilføj stande</button>
   </form>
-  <button class="btn btn-primary" (click)="addBooth()" type="submit">Tilføj stande</button>
 </div>

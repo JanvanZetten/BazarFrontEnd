@@ -16,7 +16,7 @@ export class AddBoothComponent implements OnInit {
     booker: new FormControl('')
   });
   errorBool = false;
-  error;string;
+  error: string;
 
 
   constructor(private boothService: BoothService) { }
@@ -26,18 +26,20 @@ export class AddBoothComponent implements OnInit {
   addBooth() {
     let boothForm:any = this.boothForm.value;
 
-    for (let i = 0; i < boothForm.amount; i++) {
+    for (let i = 0; i < boothForm.amount; i++)
+    {
       let booth = new Booth();
-      if (boothForm.booker > 0) {
-        let user = new User();
-        user.id = boothForm.booker;
-        booth.booker = user;
+      if (boothForm.booker > 0)
+      {
         if(this.errorBool == true)
         {
           break;
         }
+        let user = new User();
+        user.id = boothForm.booker;
+        booth.booker = user;
       }
-      this.boothService.addBooth(booth).subscribe( m =>{}, e => {this.errorBool = true, this.error = e.error});
+      this.boothService.addBooth(booth).subscribe( m =>{}, e => {this.errorBool = true; this.error = e.error});
 
     }
   }
