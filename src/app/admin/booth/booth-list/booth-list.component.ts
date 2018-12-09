@@ -11,15 +11,15 @@ import {AlertComponent} from "ngx-bootstrap";
 })
 export class BoothListComponent implements OnInit {
   booths: Booth[]
-  errorMessage: string = "Der er sket en fejl";
-  confirmationMessage: string = "Handling blev udført";
+  errorMessage: string = "Der er sket en fejl"; // Default error message.
+  confirmationMessage: string = "Handling blev udført"; // Default confirmation message.
   alerts: any[] = [{
     class: "",
     type: "",
     msgStrong: "",
     msg: "",
     timeout: 1
-  }];
+  }]; // Array with descriped anonymous alert object.
 
   constructor(private boothService: BoothService) { }
 
@@ -35,6 +35,10 @@ export class BoothListComponent implements OnInit {
     });
   }
 
+  /**
+   * Pushes confirmation alert on success and pushes error alert on error.
+   * @param obs For subscribing and checking if success or error.
+   */
   alertHandler(obs: Observable){
     obs.subscribe(result => {
       this.refresh();
@@ -57,6 +61,10 @@ export class BoothListComponent implements OnInit {
     })
   }
 
+  /**
+   * Removes alert from alert array.
+   * @param dismissedAlert The alert wanted removed.
+   */
   onAlertClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }

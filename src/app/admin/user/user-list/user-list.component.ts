@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../shared/model/user";
 import {UserService} from "../../../shared/services/user.service";
-import {Booth} from "../../../shared/model/booth";
-import {BoothService} from "../../../shared/services/booth.service";
 import {Observable} from "rxjs";
 import {AlertComponent} from "ngx-bootstrap";
 
@@ -12,17 +10,16 @@ import {AlertComponent} from "ngx-bootstrap";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
   users: User[];
-  errorMessage: string = "Der er sket en fejl";
-  confirmationMessage: string = "Handling blev udført";
+  errorMessage: string = "Der er sket en fejl"; // Default error message.
+  confirmationMessage: string = "Handling blev udført"; // Default confirmation message.
   alerts: any[] = [{
     class: "",
     type: "",
     msgStrong: "",
     msg: "",
     timeout: 1
-  }];
+  }]; // Array with descriped anonymous alert object.
 
   constructor(private userService: UserService) { }
 
@@ -38,6 +35,10 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  /**
+   * Pushes confirmation alert on success and pushes error alert on error.
+   * @param obs For subscribing and checking if success or error.
+   */
   alertHandler(obs: Observable){
     obs.subscribe(result => {
       this.refresh();
@@ -60,6 +61,10 @@ export class UserListComponent implements OnInit {
     })
   }
 
+  /**
+   * Removes alert from alert array.
+   * @param dismissedAlert The alert wanted removed.
+   */
   onAlertClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
