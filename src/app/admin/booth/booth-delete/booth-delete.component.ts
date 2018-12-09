@@ -13,8 +13,8 @@ import {BoothService} from "../../../shared/services/booth.service";
 export class BoothDeleteComponent implements OnInit {
   @Input() boothId: number;
   @Output() deleted = new EventEmitter();
-  modalTitle;
-  modalBody;
+  modalTitle: string; // Title for modal.
+  modalBody: string; // Body text for modal.
 
   constructor(private boothService: BoothService) { }
 

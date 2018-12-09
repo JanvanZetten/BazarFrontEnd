@@ -13,8 +13,8 @@ import {UserService} from "../../../shared/services/user.service";
 export class UserDeleteComponent implements OnInit {
   @Input() userId: number;
   @Output() deleted = new EventEmitter();
-  modalTitle; // Title for modal.
-  modalBody; // Body text for modal.
+  modalTitle: string; // Title for modal.
+  modalBody: string; // Body text for modal.
 
   constructor(private userService: UserService) { }
 
