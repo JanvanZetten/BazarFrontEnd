@@ -1,15 +1,25 @@
+<!-- Starts template which is not shown on site -->
+<!-- Has the tag template -->
 <ng-template #template>
+  <!-- Makes a modal-header -->
   <div class="modal-header">
+    <!-- Adds title to modal title -->
     <h5 class="modal-title">{{title}}</h5>
+    <!-- Adds a cross in the upper right corner for hiding the modal -->
     <button type="button" class="close" (click)="decline()" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  <!-- Makes modal body -->
   <div class="modal-body">
+    <!-- Adds text from body variable to modal body -->
     <p>{{body}}</p>
   </div>
+  <!-- Makes modal footer -->
   <div class="modal-footer">
+    <!-- Adds button which hides the modal -->
     <button type="button" class="btn btn-secondary w-100" (click)="decline()">Nej</button>
+    <!-- Adds button which executes the code in the confirm function -->
     <button type="button" class="btn btn-danger w-100" (click)="confirm()">Ja</button>
   </div>
 </ng-template>
