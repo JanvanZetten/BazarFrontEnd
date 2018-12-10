@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* applies to first and last th element. User :nth-last-child(2) for second last */
-.table-small-coloum > thead > tr > th:nth-child(1), .table-small-coloum > thead > tr > td:last-child{
+.table-small-coloum > thead > tr > th:nth-child(1), .table-small-coloum > thead > tr > th:last-child{
   width:1%;
   white-space:nowrap;
 }
