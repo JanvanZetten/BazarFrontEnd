@@ -24,9 +24,10 @@ import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show
 import { AddBoothComponent } from './admin/booth/add-booth/add-booth.component';
 import { BoothListComponent } from './admin/booth/booth-list/booth-list.component';
 import { UserListComponent } from './admin/user/user-list/user-list.component';
-import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import {LoginService} from './shared/services/login.service';
 import {AdminGuardService} from './shared/services/admin-guard.service';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 
 export function jwtTokenGetter() {
   return 'Test';
@@ -45,7 +46,8 @@ export function jwtTokenGetter() {
     ShowWaitingPositionComponent,
     AddBoothComponent,
     BoothListComponent,
-    UserListComponent
+    UserListComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +65,6 @@ export function jwtTokenGetter() {
     ComponentLoaderFactory,
     PositioningService,
     ModalBackdropComponent],
-    JwtHelperService,
-    LoginService,
-    AdminGuardService,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

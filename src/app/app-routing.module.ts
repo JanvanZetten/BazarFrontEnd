@@ -8,15 +8,18 @@ import {CreateUserComponent} from "./create-user/create-user.component";
 import {BoothListComponent} from "./admin/booth/booth-list/booth-list.component";
 import {UserListComponent} from "./admin/user/user-list/user-list.component";
 import {AdminGuardService as AdminGuard} from './shared/services/admin-guard.service';
+import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
+import {LoginService as AuthGuard} from './shared/services/login.service';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
-    {path: 'booths', component: BookBoothComponent},
-    {path: 'user', component: BookingComponent},
+    {path: 'booths', component: BookBoothComponent, canActivate: [AuthGuard]},
+    {path: 'user', component: BookingComponent, canActivate: [AuthGuard]},
     {path: '', component: HomeComponent},
     {path: 'createUser', component: CreateUserComponent},
-    {path: 'admin/booths', component: BoothListComponent, canActivate: [AdminGuard], data: {expectedRole: 'Administrator'}},
-    {path: 'admin/users', component: UserListComponent, canActivate: [AdminGuard], data: {expectedRole: 'Administrator'}}
+    {path: 'admin/booths', component: BoothListComponent, canActivate: [AdminGuard]},
+    {path: 'admin/users', component: UserListComponent, canActivate: [AdminGuard]},
+    {path:'unauthorized', component:UnauthorizedComponent},
     ];
 
 @NgModule({
