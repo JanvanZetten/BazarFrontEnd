@@ -30,6 +30,7 @@ import { UserDeleteComponent } from './admin/user/user-delete/user-delete.compon
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.component';
+import { UserAddComponent } from './admin/user/user-add/user-add.component';
 
 export function jwtTokenGetter() {
   return 'Test';
@@ -53,7 +54,8 @@ export function jwtTokenGetter() {
     BoothDeleteComponent,
     ConfirmationModalComponent,
     UserDeleteComponent,
-    EditBoothComponent
+    EditBoothComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

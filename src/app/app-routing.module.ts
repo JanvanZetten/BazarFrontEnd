@@ -11,6 +11,7 @@ import {AdminGuardService as AdminGuard} from './shared/services/admin-guard.ser
 import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
 import {LoginService as AuthGuard} from './shared/services/login.service';
 import {EditBoothComponent} from "./admin/booth/edit-booth/edit-booth.component";
+import {UserAddComponent} from "./admin/user/user-add/user-add.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path: 'createUser', component: CreateUserComponent},
     {path: 'admin/booths', component: BoothListComponent, canActivate: [AdminGuard]},
     {path: 'admin/users', component: UserListComponent, canActivate: [AdminGuard]},
+    {path: 'admin/users/add', component: UserAddComponent, canActivate: [AdminGuard]},
     {path: 'unauthorized', component:UnauthorizedComponent},
     {path: 'admin/booths/edit/:id', component: EditBoothComponent, canActivate: [AdminGuard]}
     ];
