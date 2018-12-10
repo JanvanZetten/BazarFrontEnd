@@ -24,6 +24,9 @@ import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show
 import { AddBoothComponent } from './admin/booth/add-booth/add-booth.component';
 import { BoothListComponent } from './admin/booth/booth-list/booth-list.component';
 import { UserListComponent } from './admin/user/user-list/user-list.component';
+import { BoothDeleteComponent } from './admin/booth/booth-delete/booth-delete.component';
+import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
+import { UserDeleteComponent } from './admin/user/user-delete/user-delete.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { UserListComponent } from './admin/user/user-list/user-list.component';
     ShowWaitingPositionComponent,
     AddBoothComponent,
     BoothListComponent,
-    UserListComponent
+    UserListComponent,
+    BoothDeleteComponent,
+    ConfirmationModalComponent,
+    UserDeleteComponent
   ],
   imports: [
     BrowserModule,
