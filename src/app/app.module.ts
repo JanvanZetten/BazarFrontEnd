@@ -24,6 +24,13 @@ import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show
 import { AddBoothComponent } from './admin/booth/add-booth/add-booth.component';
 import { BoothListComponent } from './admin/booth/booth-list/booth-list.component';
 import { UserListComponent } from './admin/user/user-list/user-list.component';
+import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import {LoginService} from './shared/services/login.service';
+import {AdminGuardService} from './shared/services/admin-guard.service';
+
+export function jwtTokenGetter() {
+  return 'Test';
+}
 
 @NgModule({
   declarations: [
@@ -49,12 +56,16 @@ import { UserListComponent } from './admin/user/user-list/user-list.component';
     HttpClientModule,
     AlertModule.forRoot(),
     ModalModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({config: {tokenGetter: jwtTokenGetter}})
   ],
   providers: [BsModalService,
     ComponentLoaderFactory,
     PositioningService,
     ModalBackdropComponent],
+    JwtHelperService,
+    LoginService,
+    AdminGuardService,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

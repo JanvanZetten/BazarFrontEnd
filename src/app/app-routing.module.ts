@@ -7,6 +7,7 @@ import {HomeComponent} from "./home/home.component";
 import {CreateUserComponent} from "./create-user/create-user.component";
 import {BoothListComponent} from "./admin/booth/booth-list/booth-list.component";
 import {UserListComponent} from "./admin/user/user-list/user-list.component";
+import {AdminGuardService as AdminGuard} from './shared/services/admin-guard.service';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -14,8 +15,8 @@ const routes: Routes = [
     {path: 'user', component: BookingComponent},
     {path: '', component: HomeComponent},
     {path: 'createUser', component: CreateUserComponent},
-    {path: 'admin/booths', component: BoothListComponent},
-    {path: 'admin/users', component: UserListComponent}
+    {path: 'admin/booths', component: BoothListComponent, canActivate: [AdminGuard], data: {expectedRole: 'Administrator'}},
+    {path: 'admin/users', component: UserListComponent, canActivate: [AdminGuard], data: {expectedRole: 'Administrator'}}
     ];
 
 @NgModule({
