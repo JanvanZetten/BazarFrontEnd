@@ -36,13 +36,14 @@ export class UserEditComponent implements OnInit {
     this.userService.getUser(this.id).subscribe(
       user => {
         this.userForm.patchValue({
-            username: user.username
+            username: user.username,
+            isAdmin: user.isAdmin
         })
       }
     );
   }
 
-  addUser() {
+  editUser() {
     if (this.userForm.get('password').value === this.userForm.get('passwordRepeated').value){
       if (this.userForm.get('password').value !== null && this.userForm.get('username').value !== null) {
         var tmp: User = {

@@ -1,5 +1,5 @@
 <div class="mx-auto text-center" style="min-width:80px; max-width: 400px;">
-  <form [formGroup]="userForm" (ngSubmit)="addUser()">
+  <form [formGroup]="userForm" (ngSubmit)="editUser()">
     <div class="form-group">
       <label>Brugernavn:</label>
       <input type="text" class="form-control" formControlName="username" placeholder="Brugernavn...">
@@ -17,7 +17,7 @@
       <label for="isAdmin" class="form-check-label">Administrator</label>
     </div>
 
-    <button class="btn btn-primary" type="submit">Tilføj bruger</button>
+    <button class="btn btn-primary" type="submit">Gem</button>
   </form>
   <div *ngFor="let alert of alerts">
     <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>

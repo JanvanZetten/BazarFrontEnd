@@ -11,7 +11,12 @@
   <tr *ngFor="let user of users">
     <th scope="row">{{user.id}}</th>
     <td>{{user.username}}</td>
-    <td><app-user-delete [userId]="user.id" (deleted)="alertHandler($event)"></app-user-delete></td>
+    <td>
+      <div>
+        <button routerLink="/admin/users/edit/{{user.id}}" class="btn btn-secondary mr-1">Rediger</button>
+        <app-user-delete [userId]="user.id" (deleted)="alertHandler($event)"></app-user-delete>
+      </div>
+    </td>
   </tr>
   </tbody>
 </table>
