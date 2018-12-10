@@ -39,7 +39,7 @@ export class BoothListComponent implements OnInit {
    * Pushes confirmation alert on success and pushes error alert on error.
    * @param obs For subscribing and checking if success or error.
    */
-  alertHandler(obs: Observable<Any>){
+  alertHandler(obs: Observable<any>){
     obs.subscribe(result => {
       this.refresh();
       this.alerts.push({

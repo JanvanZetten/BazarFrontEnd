@@ -28,6 +28,7 @@ import { BoothDeleteComponent } from './admin/booth/booth-delete/booth-delete.co
 import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
 import { UserDeleteComponent } from './admin/user/user-delete/user-delete.component';
 import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.component';
+import { UserAddComponent } from './admin/user/user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.componen
     BoothDeleteComponent,
     ConfirmationModalComponent,
     UserDeleteComponent,
-    EditBoothComponent
+    EditBoothComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

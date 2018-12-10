@@ -8,6 +8,7 @@ import {CreateUserComponent} from "./create-user/create-user.component";
 import {BoothListComponent} from "./admin/booth/booth-list/booth-list.component";
 import {UserListComponent} from "./admin/user/user-list/user-list.component";
 import {EditBoothComponent} from "./admin/booth/edit-booth/edit-booth.component";
+import {UserAddComponent} from "./admin/user/user-add/user-add.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path: 'createUser', component: CreateUserComponent},
     {path: 'admin/booths', component: BoothListComponent},
     {path: 'admin/users', component: UserListComponent},
-    {path: 'admin/booths/edit/:id', component: EditBoothComponent}
+    {path: 'admin/booths/edit/:id', component: EditBoothComponent},
+    {path: 'admin/users/add', component: UserAddComponent}
     ];
 
 @NgModule({
