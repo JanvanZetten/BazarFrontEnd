@@ -1,17 +1,23 @@
-<div>
+<div  style="width: 400px;">
   <form [formGroup]="boothForm" (ngSubmit)="addBooth()">
-    <label>
-      !!!! Hvis standen ikke skal have en standholder, så undlad at sætte noget ind i feltet.
-      <br>
-      <a style="margin-left:38px;">Standholder</a>
-      <input style="margin-left:14px;" type="number" placeholder="Bruger id" formControlName="booker">
-    </label>
-    <br>
-    <label>
-      Mængde af stande
-      <input type="number" placeholder="Mængde af stande" formControlName="amount">
-    </label>
-    <br>
+
+    <div class="form-group">
+      <label>
+        Standholder:
+      </label>
+      <input class="form-control" type="number" placeholder="Bruger id" formControlName="booker">
+      <small class="form-text text-muted">
+        Hvis standen ikke skal have en standholder, så undlad at sætte noget ind i feltet.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Mængde af stande:
+      </label>
+      <input class="form-control" type="number" placeholder="Mængde af stande" formControlName="amount">
+    </div>
+
     <button class="btn btn-primary" type="submit">Tilføj stande</button>
   </form>
 </div>
