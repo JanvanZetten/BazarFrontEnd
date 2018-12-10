@@ -4,6 +4,7 @@ import {RegisterService} from "../../../shared/services/register.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BoothService} from "../../../shared/services/booth.service";
 import {UserService} from "../../../shared/services/user.service";
+import {User} from "../../../shared/model/user";
 
 @Component({
   selector: 'app-user-edit',
@@ -15,7 +16,8 @@ export class UserEditComponent implements OnInit {
   userForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
-    passwordRepeated: new FormControl('')
+    passwordRepeated: new FormControl(''),
+    isAdmin: new FormControl('')
   });
   alerts: any[] = [{
     class: "",
@@ -25,8 +27,7 @@ export class UserEditComponent implements OnInit {
     timeout: 1
   }]; // Array with descriped anonymous alert object.
 
-  constructor(private registerService: RegisterService,
-              private router: Router,
+  constructor(private router: Router,
               private route: ActivatedRoute,
               private userService: UserService) { }
 
@@ -35,8 +36,7 @@ export class UserEditComponent implements OnInit {
     this.userService.getUser(this.id).subscribe(
       user => {
         this.userForm.patchValue({
-            username: user.username,
-
+            username: user.username
         })
       }
     );
@@ -45,7 +45,12 @@ export class UserEditComponent implements OnInit {
   addUser() {
     if (this.userForm.get('password').value === this.userForm.get('passwordRepeated').value){
       if (this.userForm.get('password').value !== null && this.userForm.get('username').value !== null) {
-        this.registerService.newUser(this.userForm.get('username').value, this.userForm.get('password').value)
+        var tmp: User = {
+          id: this.id,
+          username: this.userForm.get('username').value,
+          isAdmin: this.userForm.get('isAdmin').value ? true : false
+        };
+        this.userService.updateUser(tmp)
           .subscribe(() => {
               this.router.navigate(['/admin/users']);
             },
