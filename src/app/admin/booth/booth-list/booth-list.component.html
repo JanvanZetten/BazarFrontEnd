@@ -13,7 +13,12 @@
     <th scope="row">{{booth.id}}</th>
     <td *ngIf="booth.booker">{{booth.booker.username}}</td>
     <td *ngIf="!booth.booker">Ledig</td>
-    <td><app-booth-delete [boothId]="booth.id" (deleted)="alertHandler($event)"></app-booth-delete></td>
+    <td>
+      <div>
+        <button routerLink="/admin/booths/edit/{{booth.id}}" class="btn btn-secondary mr-1">Rediger</button>
+        <app-booth-delete [boothId]="booth.id" (deleted)="alertHandler($event)"></app-booth-delete>
+      </div>
+    </td>
   </tr>
   </tbody>
 </table>
