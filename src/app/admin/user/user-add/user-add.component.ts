@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {RegisterService} from "../../../shared/services/register.service";
 import {Router} from "@angular/router";
+import {AlertComponent} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-user-add',
@@ -12,7 +13,8 @@ export class UserAddComponent implements OnInit {
   userForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
-    passwordRepeated: new FormControl('')
+    passwordRepeated: new FormControl(''),
+    isAdmin: new FormControl('')
   });
   alerts: any[] = [{
     class: "",
@@ -30,7 +32,7 @@ export class UserAddComponent implements OnInit {
   addUser() {
     if (this.userForm.get('password').value === this.userForm.get('passwordRepeated').value){
       if (this.userForm.get('password').value !== null && this.userForm.get('username').value !== null) {
-        this.registerService.newUser(this.userForm.get('username').value, this.userForm.get('password').value)
+        this.registerService.adminNewUser(this.userForm.get('username').value, this.userForm.get('password').value, this.userForm.get('isAdmin').value ? true : false)
           .subscribe(() => {
               this.router.navigate(['/admin/users']);
             },
@@ -63,5 +65,13 @@ export class UserAddComponent implements OnInit {
         timeout: 5000
       });
     }
+  }
+
+  /**
+   * Removes alert from alert array.
+   * @param dismissedAlert The alert wanted removed.
+   */
+  onAlertClosed(dismissedAlert: AlertComponent): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 }
