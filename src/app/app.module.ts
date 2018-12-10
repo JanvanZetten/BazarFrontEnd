@@ -27,7 +27,13 @@ import { UserListComponent } from './admin/user/user-list/user-list.component';
 import { BoothDeleteComponent } from './admin/booth/booth-delete/booth-delete.component';
 import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
 import { UserDeleteComponent } from './admin/user/user-delete/user-delete.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import {JwtModule} from '@auth0/angular-jwt';
 import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.component';
+
+export function jwtTokenGetter() {
+  return 'Test';
+}
 
 @NgModule({
   declarations: [
@@ -43,6 +49,7 @@ import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.componen
     AddBoothComponent,
     BoothListComponent,
     UserListComponent,
+    UnauthorizedComponent,
     BoothDeleteComponent,
     ConfirmationModalComponent,
     UserDeleteComponent,
@@ -57,7 +64,8 @@ import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.componen
     HttpClientModule,
     AlertModule.forRoot(),
     ModalModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({config: {tokenGetter: jwtTokenGetter}})
   ],
   providers: [BsModalService,
     ComponentLoaderFactory,
