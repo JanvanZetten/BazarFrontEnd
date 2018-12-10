@@ -21,7 +21,9 @@ export class ShowReservationBoothComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.boothService.getUsersBooking().subscribe(booth => this.boothBooked = booth);
+    this.boothService.getUsersBooking().subscribe(booth => this.boothBooked = booth,
+        error => {this.error = true,
+      this.errorMessage = error.error });
   }
 
   openModal(template: TemplateRef<any>) {
@@ -32,6 +34,8 @@ export class ShowReservationBoothComponent implements OnInit {
     this.boothService.cancelReservation(this.boothId).
     subscribe(booth => { this.success = true; this.modalRef.hide();},
       error => { this.error = true; this.errorMessage = error.error; this.modalRef.hide();});
+    this.boothService.getBooths().subscribe(b => {this.boothBooked = b}, error => {this.error = true,
+      this.errorMessage = error.error });
   }
 
   decline() {
