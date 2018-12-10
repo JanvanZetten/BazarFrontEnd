@@ -35,6 +35,12 @@
         </a>
       </li>
 
+
+      <li *ngIf="ifAdministrator()" class="nav-item">
+        <a class="nav-link" routerLink="/admin/booths" (click)="isCollapsed = true" routerLinkActive="active">
+          Admin
+        </a>
+      </li>
     <!--More page links can be added here...-->
 
 

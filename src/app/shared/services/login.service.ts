@@ -3,13 +3,23 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
+import {CanActivate} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService implements  CanActivate{
 
   constructor(private http: HttpClient) {}
+
+  canActivate():boolean
+  {
+    if(this.getToken())
+    {
+      return true;
+    }
+    return false;
+  }
 
   login(username: string, password: string): Observable<boolean> {
     return this.http.post<any>(environment.apiUrl + '/Tokens', { username, password })
@@ -42,4 +52,5 @@ export class LoginService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
   }
+
 }
