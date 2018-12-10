@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Route, Router} from '@angular/router';
+import {CanActivate, Route, Router} from '@angular/router';
 import {LoginService} from './login.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
@@ -11,6 +11,8 @@ export class AdminGuardService implements CanActivate{
   constructor(private loginService: LoginService,
               private jwtHelper: JwtHelperService, private router:Router) { }
 
+  // If user is an admin, he can access admin sites.
+  // Checking if the token has "administrator" in role.
   canActivate(): boolean
   {
     const token = this.loginService.getToken();
@@ -28,6 +30,7 @@ export class AdminGuardService implements CanActivate{
     return true;
   }
 
+  // Check if user is an administrator, is used in navbar whether to show "admin" or not.
   ifAdministrator()
   {
     const token = this.loginService.getToken();
