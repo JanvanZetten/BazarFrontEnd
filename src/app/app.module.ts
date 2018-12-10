@@ -29,7 +29,7 @@ import { ConfirmationModalComponent } from './shared/confirmation-modal/confirma
 import { UserDeleteComponent } from './admin/user/user-delete/user-delete.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {JwtModule} from '@auth0/angular-jwt';
-
+import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.component';
 
 export function jwtTokenGetter() {
   return 'Test';
@@ -52,7 +52,8 @@ export function jwtTokenGetter() {
     UnauthorizedComponent,
     BoothDeleteComponent,
     ConfirmationModalComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
+    EditBoothComponent
   ],
   imports: [
     BrowserModule,
