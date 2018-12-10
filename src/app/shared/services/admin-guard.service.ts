@@ -20,7 +20,7 @@ export class AdminGuardService implements CanActivate{
       this.router.navigate(['login']);
     }
 
-    if(tokenPayload.role !== 'Administrator')
+    if(tokenPayload.role !== 'Administrator'|| !this.loginService.getToken())
     {
       this.router.navigate(['unauthorized']);
       return false;
@@ -37,9 +37,8 @@ export class AdminGuardService implements CanActivate{
       return false;
     }
 
-    if(tokenPayload.role !== 'Administrator')
+    if(tokenPayload.role !== 'Administrator' || !this.loginService.getToken())
     {
-      this.router.navigate(['unauthorized']);
       return false;
     }
     return true;

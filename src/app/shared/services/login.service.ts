@@ -40,6 +40,9 @@ export class LoginService implements  CanActivate{
 
   getToken(): string {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(currentUser);
+    console.log(currentUser.token);
+
     return currentUser && currentUser.token;
   }
 
