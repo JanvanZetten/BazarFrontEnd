@@ -1,0 +1,4 @@
+<!-- The button for deleting a user. On click: Runs function open() in app-confirmation-modal, using the confirmation tag. -->
+<button class="btn btn-danger" (click)="confirmation.open()">Slet</button>
+<!-- Adds the confirmation modal to the view. Passing the modal title and body. On confirmed event the delete function is executed. -->
+<app-confirmation-modal #confirmation [title]="modalTitle" [body]="modalBody" (confirmed)="delete()"></app-confirmation-modal>

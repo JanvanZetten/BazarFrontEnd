@@ -24,10 +24,12 @@ import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show
 import { AddBoothComponent } from './admin/booth/add-booth/add-booth.component';
 import { BoothListComponent } from './admin/booth/booth-list/booth-list.component';
 import { UserListComponent } from './admin/user/user-list/user-list.component';
-import {LoginService} from './shared/services/login.service';
-import {AdminGuardService} from './shared/services/admin-guard.service';
+import { BoothDeleteComponent } from './admin/booth/booth-delete/booth-delete.component';
+import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
+import { UserDeleteComponent } from './admin/user/user-delete/user-delete.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import {JwtModule} from '@auth0/angular-jwt';
+
 
 export function jwtTokenGetter() {
   return 'Test';
@@ -47,7 +49,10 @@ export function jwtTokenGetter() {
     AddBoothComponent,
     BoothListComponent,
     UserListComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    BoothDeleteComponent,
+    ConfirmationModalComponent,
+    UserDeleteComponent
   ],
   imports: [
     BrowserModule,
