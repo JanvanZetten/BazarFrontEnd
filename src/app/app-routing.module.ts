@@ -20,7 +20,7 @@ const routes: Routes = [
     {path: 'createUser', component: CreateUserComponent},
     {path: 'admin/booths', component: BoothListComponent, canActivate: [AdminGuard]},
     {path: 'admin/users', component: UserListComponent, canActivate: [AdminGuard]},
-    {path:'unauthorized', component:UnauthorizedComponent},
+    {path: 'unauthorized', component:UnauthorizedComponent},
     {path: 'admin/booths/edit/:id', component: EditBoothComponent, canActivate: [AdminGuard]}
     ];
 

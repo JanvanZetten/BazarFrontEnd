@@ -38,7 +38,14 @@
 
       <li *ngIf="ifAdministrator()" class="nav-item">
         <a class="nav-link" routerLink="/admin/booths" (click)="isCollapsed = true" routerLinkActive="active">
-          Admin
+        Stande
+        </a>
+      </li>
+
+
+      <li *ngIf="ifAdministrator()" class="nav-item">
+        <a class="nav-link" routerLink="/admin/users" (click)="isCollapsed = true" routerLinkActive="active">
+          Brugere
         </a>
       </li>
     <!--More page links can be added here...-->
