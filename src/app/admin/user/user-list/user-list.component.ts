@@ -39,7 +39,7 @@ export class UserListComponent implements OnInit {
    * Pushes confirmation alert on success and pushes error alert on error.
    * @param obs For subscribing and checking if success or error.
    */
-  alertHandler(obs: Observable){
+  alertHandler(obs: Observable<Any>){
     obs.subscribe(result => {
       this.refresh();
       this.alerts.push({
