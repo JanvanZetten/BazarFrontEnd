@@ -5,6 +5,7 @@
   <tr>
     <th scope="col">#</th>
     <th scope="col" class="text-left">Booker</th>
+    <th scope="col"></th>
   </tr>
   </thead>
   <tbody>
@@ -12,9 +13,15 @@
     <th scope="row">{{booth.id}}</th>
     <td *ngIf="booth.booker">{{booth.booker.username}}</td>
     <td *ngIf="!booth.booker">Ledig</td>
+    <td>
+      <div>
+        <button routerLink="/admin/booths/edit/{{booth.id}}" class="btn btn-secondary mr-1">Rediger</button>
+        <app-booth-delete [boothId]="booth.id" (deleted)="alertHandler($event)"></app-booth-delete>
+      </div>
+    </td>
   </tr>
   </tbody>
 </table>
-<div *ngIf="!booths">
-  <p>{{errorMessage}}.</p>
+<div *ngFor="let alert of alerts">
+  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
 </div>

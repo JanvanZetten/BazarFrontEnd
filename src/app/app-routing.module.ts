@@ -10,6 +10,7 @@ import {UserListComponent} from "./admin/user/user-list/user-list.component";
 import {AdminGuardService as AdminGuard} from './shared/services/admin-guard.service';
 import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
 import {LoginService as AuthGuard} from './shared/services/login.service';
+import {EditBoothComponent} from "./admin/booth/edit-booth/edit-booth.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path: 'admin/booths', component: BoothListComponent, canActivate: [AdminGuard]},
     {path: 'admin/users', component: UserListComponent, canActivate: [AdminGuard]},
     {path: 'unauthorized', component:UnauthorizedComponent},
+    {path: 'admin/booths/edit/:id', component: EditBoothComponent, canActivate: [AdminGuard]}
     ];
 
 @NgModule({
