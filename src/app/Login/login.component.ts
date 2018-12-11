@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', )
   });
   error = false;
-  errorMessage: String;
   errorMessage: string = "Der er sket en fejl"; // Default error message.
   alerts: any[] = [{
     class: "",

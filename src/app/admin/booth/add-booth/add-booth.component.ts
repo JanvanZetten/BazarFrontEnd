@@ -33,9 +33,10 @@ export class AddBoothComponent implements OnInit {
   ngOnInit() {}
 
   addBooth() {
+
     let boothForm:any = this.boothForm.value;
 
-    if(boothForm.amount.value > this.maxAmountOfBoothsAllowed) {
+    if(boothForm.amount > this.maxAmountOfBoothsAllowed) {
       this.alerts.push({
         class: "text-center",
         type: "danger",
@@ -51,7 +52,8 @@ export class AddBoothComponent implements OnInit {
         user.id = boothForm.booker;
         booth.booker = user;
       }
-      this.boothService.addBooth(boothForm.amount.value, booth).subscribe(
+
+      this.boothService.addBooth(boothForm.amount, booth).subscribe(
         m => {}, e => {
           this.errorBool = true;
           this.error = e.error
