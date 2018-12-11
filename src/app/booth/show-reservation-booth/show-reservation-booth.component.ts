@@ -34,8 +34,6 @@ export class ShowReservationBoothComponent implements OnInit {
     this.boothService.cancelReservation(this.boothId).
     subscribe(booth => { this.success = true; this.modalRef.hide();},
       error => { this.error = true; this.errorMessage = error.error; this.modalRef.hide();});
-    this.boothService.getBooths().subscribe(b => {this.boothBooked = b}, error => {this.error = true,
-      this.errorMessage = error.error });
   }
 
   decline() {
