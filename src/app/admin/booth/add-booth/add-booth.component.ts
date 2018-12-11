@@ -17,7 +17,16 @@ export class AddBoothComponent implements OnInit {
   });
   errorBool = false;
   error: string;
+  maxAmountOfBoothsAllowed = 1000;
 
+  errorMessage: string = "Der er sket en fejl"; // Default error message.
+  alerts: any[] = [{
+    class: "",
+    type: "",
+    msgStrong: "",
+    msg: "",
+    timeout: 1
+  }]; // Array with descriped anonymous alert object.
 
   constructor(private boothService: BoothService) { }
 
@@ -26,21 +35,27 @@ export class AddBoothComponent implements OnInit {
   addBooth() {
     let boothForm:any = this.boothForm.value;
 
-    for (let i = 0; i < boothForm.amount; i++)
-    {
+    if(boothForm.amount.value > this.maxAmountOfBoothsAllowed) {
+      this.alerts.push({
+        class: "text-center",
+        type: "danger",
+        msgStrong: "Fejl!",
+        msg: "Der må maks laves " + this.maxAmountOfBoothsAllowed + " nye stande ad gangen.",
+        timeout: 5000
+    })
+    }
+    else {
       let booth = new Booth();
-      if (boothForm.booker > 0)
-      {
-        if(this.errorBool == true)
-        {
-          break;
-        }
+      if (boothForm.booker > 0) {
         let user = new User();
         user.id = boothForm.booker;
         booth.booker = user;
       }
-      this.boothService.addBooth(booth).subscribe( m =>{}, e => {this.errorBool = true; this.error = e.error});
-
+      this.boothService.addBooth(boothForm.amount.value, booth).subscribe(
+        m => {}, e => {
+          this.errorBool = true;
+          this.error = e.error
+        });
     }
   }
 }
