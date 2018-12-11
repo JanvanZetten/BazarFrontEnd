@@ -1,0 +1,29 @@
+<div  style="width: 400px;">
+  <form [formGroup]="boothForm" (ngSubmit)="addBooth()">
+
+    <div class="form-group">
+      <label>
+        Standholder:
+      </label>
+      <input class="form-control" type="number" placeholder="Bruger id" formControlName="booker">
+      <small class="form-text text-muted">
+        Hvis standen ikke skal have en standholder, så undlad at sætte noget ind i feltet.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Mængde af stande:
+      </label>
+      <input class="form-control" type="number" placeholder="Mængde af stande" formControlName="amount">
+      <small class="form-text text-muted">
+        Et maximum af {{maxAmountOfBoothsAllowed}} stande kan blive lavet ad gangen.
+      </small>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Tilføj stande</button>
+  </form>
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
+  </div>
+</div>

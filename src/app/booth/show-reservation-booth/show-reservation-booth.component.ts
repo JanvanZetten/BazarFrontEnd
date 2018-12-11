@@ -21,7 +21,9 @@ export class ShowReservationBoothComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.boothService.getUsersBooking().subscribe(booth => this.boothBooked = booth);
+    this.boothService.getUsersBooking().subscribe(booth => this.boothBooked = booth,
+        error => {this.error = true,
+      this.errorMessage = error.error });
   }
 
   openModal(template: TemplateRef<any>) {

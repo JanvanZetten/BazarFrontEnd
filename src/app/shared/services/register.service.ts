@@ -16,12 +16,17 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class RegisterService {
-  Url = environment.apiUrl + '/tokens/createuser';
+  Url = environment.apiUrl + '/tokens';
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
+  private setOptions() {
+    httpOptions.headers =
+      httpOptions.headers.set('Authorization', 'Bearer ' + this.loginService.getToken());
+  }
+
   newUser(username: string, password: string): Observable<boolean>{
-    return this.http.post<any>(this.Url, { username, password })
+    return this.http.post<any>(this.Url + "/createUser", { username, password })
       .pipe(map(response => {
         const newUsername = response && response.username;
 
@@ -29,6 +34,20 @@ export class RegisterService {
           this.loginService.login(username, password).subscribe(value => {
             return value;
           })
+        } else {
+          return false;
+        }
+      }));
+  }
+
+  adminNewUser(username: string, password: string, isAdmin: boolean): Observable<boolean>{
+    this.setOptions();
+    return this.http.post<any>(this.Url + "/createUserAdmin", { username, password, isAdmin }, httpOptions)
+      .pipe(map(response => {
+        const newUsername = response && response.username;
+
+        if (newUsername) {
+          return true;
         } else {
           return false;
         }

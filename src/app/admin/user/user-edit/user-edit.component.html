@@ -1,0 +1,41 @@
+<div class="mx-auto text-center" style="min-width:80px; max-width: 400px;">
+  <form [formGroup]="userForm" (ngSubmit)="editUser()">
+    <div class="form-group">
+      <label>Brugernavn:</label>
+      <input type="text" class="form-control" formControlName="username" placeholder="Brugernavn...">
+    </div>
+
+    <!-- Password part not Supported in backend yet
+    <div class="form-group">
+      <label>Kodeord:</label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Kodeord...">
+      <small class="form-text text-muted text-left">
+        Hvis kodeordet ikke skal ændres holdes disse blanke.
+      </small>
+    </div>
+    <div class="form-group">
+      <label>Gentag kodeord:</label>
+      <input type="password" class="form-control" formControlName="passwordRepeated" placeholder="Gentag kodeord...">
+    </div>
+
+    -->
+
+    <div id="fancy-checkbox" class="form-group form-check">
+      <input type="checkbox" formControlName="isAdmin" autocomplete="off" value="" id="isAdmin" />
+      <div class="btn-group">
+        <label for="isAdmin" class="btn btn-link border">
+          <i class="fas fa-check my-1"></i>
+          <i></i>
+        </label>
+        <label for="isAdmin" class="btn btn-light disabled border">
+          Administrator
+        </label>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Gem</button>
+  </form>
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
+  </div>
+</div>

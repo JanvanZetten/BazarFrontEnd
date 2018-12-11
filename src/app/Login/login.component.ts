@@ -16,7 +16,14 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', )
   });
   error = false;
-  errorMessage: String;
+  errorMessage: string = "Der er sket en fejl"; // Default error message.
+  alerts: any[] = [{
+    class: "",
+    type: "",
+    msgStrong: "",
+    msg: "",
+    timeout: 1
+  }]; // Array with descriped anonymous alert object.
 
   constructor(private loginService: LoginService, private router: Router) {
   }
@@ -25,7 +32,13 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
     this.loginService.login(username, password).subscribe(sucess => {this.router.navigate(['/']); },
-      error => {this.error = true, this.errorMessage = error.error });
+      error => this.alerts.push({
+        class: "text-center",
+        type: "danger",
+        msgStrong: "Fejl!",
+        msg: error.error,
+        timeout: 5000
+      }));
   }
 
   ngOnInit() {

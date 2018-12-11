@@ -31,14 +31,19 @@ export class BoothService {
     return this.http.get<Booth[]>(this.Url, httpOptions);
   }
 
+  getBoothsIncludeAll(): Observable<Booth[]> {
+    this.setOptions();
+    return this.http.get<Booth[]>(this.Url + "/includeAll", httpOptions);
+  }
+
   getBooth(id: number): Observable<Booth>{
     this.setOptions();
     return this.http.get<Booth>(this.Url + "/" + id, httpOptions);
   }
 
-  addBooth(booth: Booth): Observable<Booth>{
+  addBooth(amount: Number, booth: Booth): Observable<Booth[]>{
     this.setOptions();
-    return this.http.post<Booth>(this.Url, booth, httpOptions);
+    return this.http.post<Booth[]>(this.Url, {amount: amount, booth: booth}, httpOptions);
   }
 
   updateBooth(booth: Booth): Observable<Booth> {

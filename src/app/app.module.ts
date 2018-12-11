@@ -21,6 +21,21 @@ import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show-waiting-position.component';
+import { AddBoothComponent } from './admin/booth/add-booth/add-booth.component';
+import { BoothListComponent } from './admin/booth/booth-list/booth-list.component';
+import { UserListComponent } from './admin/user/user-list/user-list.component';
+import { BoothDeleteComponent } from './admin/booth/booth-delete/booth-delete.component';
+import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
+import { UserDeleteComponent } from './admin/user/user-delete/user-delete.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import {JwtModule} from '@auth0/angular-jwt';
+import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.component';
+import { UserAddComponent } from './admin/user/user-add/user-add.component';
+import { UserEditComponent } from './admin/user/user-edit/user-edit.component';
+
+export function jwtTokenGetter() {
+  return 'Test';
+}
 
 @NgModule({
   declarations: [
@@ -32,7 +47,17 @@ import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show
     BookingComponent,
     HomeComponent,
     CreateUserComponent,
-    ShowWaitingPositionComponent
+    ShowWaitingPositionComponent,
+    AddBoothComponent,
+    BoothListComponent,
+    UserListComponent,
+    UnauthorizedComponent,
+    BoothDeleteComponent,
+    ConfirmationModalComponent,
+    UserDeleteComponent,
+    EditBoothComponent,
+    UserAddComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +68,8 @@ import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show
     HttpClientModule,
     AlertModule.forRoot(),
     ModalModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({config: {tokenGetter: jwtTokenGetter}})
   ],
   providers: [BsModalService,
     ComponentLoaderFactory,
