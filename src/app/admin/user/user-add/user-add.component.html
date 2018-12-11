@@ -12,9 +12,17 @@
       <label>Gentag kodeord:</label>
       <input type="password" class="form-control" formControlName="passwordRepeated" placeholder="Gentag kodeord...">
     </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" formControlName="isAdmin" value="" id="isAdmin">
-      <label for="isAdmin" class="form-check-label">Administrator</label>
+    <div id="fancy-checkbox" class="form-group form-check">
+      <input type="checkbox" formControlName="isAdmin" autocomplete="off" value="" id="isAdmin" />
+      <div class="btn-group">
+        <label for="isAdmin" class="btn btn-link border">
+          <i class="fas fa-check my-1"></i>
+          <i></i>
+        </label>
+        <label for="isAdmin" class="btn btn-light disabled border">
+          Administrator
+        </label>
+      </div>
     </div>
 
     <button class="btn btn-primary" type="submit">Tilføj bruger</button>
