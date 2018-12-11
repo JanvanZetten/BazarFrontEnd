@@ -16,6 +16,9 @@
         Mængde af stande:
       </label>
       <input class="form-control" type="number" placeholder="Mængde af stande" formControlName="amount">
+      <small class="form-text text-muted">
+        Et maximum af {{maxAmountOfBoothsAllowed}} stande kan blive lavet ad gangen.
+      </small>
     </div>
 
     <button class="btn btn-primary" type="submit">Tilføj stande</button>
