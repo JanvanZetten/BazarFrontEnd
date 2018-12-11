@@ -19,32 +19,14 @@ export class AddBoothComponent implements OnInit {
   error: string;
   maxAmountOfBoothsAllowed = 1000;
 
-  errorMessage: string = "Der er sket en fejl"; // Default error message.
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }]; // Array with descriped anonymous alert object.
-
   constructor(private boothService: BoothService) { }
 
   ngOnInit() {}
 
   addBooth() {
-
     let boothForm:any = this.boothForm.value;
 
-    if(boothForm.amount > this.maxAmountOfBoothsAllowed) {
-      this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: "Der må maks laves " + this.maxAmountOfBoothsAllowed + " nye stande ad gangen.",
-        timeout: 5000
-    })
-    }
+    if(boothForm.amount > this.maxAmountOfBoothsAllowed) {  }
     else {
       let booth = new Booth();
       if (boothForm.booker > 0) {
