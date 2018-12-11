@@ -1,4 +1,4 @@
-
+<!-- Det gamle reservering
 <div class="text-center">
 <h4 *ngIf="numberOfNonbookedBooths > 1">Der er {{numberOfNonbookedBooths}} stande fri</h4>
 
@@ -19,4 +19,32 @@
 <alert class="text-center" *ngIf="error" type="warning">
   <strong>Der er ikke reserveret en stand</strong> {{errorMessage}}
 </alert>
+-->
+
+<div class="row" style="max-width: 860px">
+<div class="col">
+  <h5>Dine Valg:</h5>
+<div class="scrollListSmall rounded">
+  <table class="w-100 table-striped">
+    <tr class="my-3 w-100" *ngFor="let boothItem of boothsToBook">
+      <td>Stand nummer: {{boothItem.id}}</td>
+      <td><button class="btn btn-danger btn-outline float-right" (click)="RemoveFromtobeBooked(boothItem)">X</button></td>
+    </tr>
+  </table>
+</div>
+<button class="btn btn-primary my-3">Reserver stande</button>
+</div>
+
+<div class="col-md">
+<h5>Tilgængelige stande:</h5>
+<div class="scrollList rounded">
+<table class="w-100 table-striped">
+  <tr class="my-3 w-100" *ngFor="let boothItem of booths">
+    <td>Stand nummer: {{boothItem.id}}</td>
+    <td><button class="btn btn-primary float-right" (click)="addToBeBooked(boothItem)">Reserver</button></td>
+  </tr>
+</table>
+</div>
+</div>
+</div>
 
