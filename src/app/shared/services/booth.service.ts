@@ -43,7 +43,7 @@ export class BoothService {
 
   addBooth(amount: Number, booth: Booth): Observable<Booth[]>{
     this.setOptions();
-    return this.http.post<any>(this.Url, {amount: amount, booth: booth}, httpOptions);
+    return this.http.post<Booth[]>(this.Url, {amount: amount, booth: booth}, httpOptions);
   }
 
   updateBooth(booth: Booth): Observable<Booth> {
