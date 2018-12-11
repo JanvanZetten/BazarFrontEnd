@@ -23,5 +23,7 @@
 
     <button class="btn btn-primary" type="submit">Tilføj stande</button>
   </form>
-
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
+  </div>
 </div>
