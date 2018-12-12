@@ -3,6 +3,7 @@ import {BoothService} from '../../shared/services/booth.service';
 import {LoginService} from '../../shared/services/login.service';
 import {Booth} from '../../shared/model/booth';
 import {AlertComponent} from "ngx-bootstrap";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-book-booth',
@@ -27,7 +28,7 @@ export class BookBoothComponent implements OnInit {
   }]; // Array with descriped anonymous alert object.
 
 
-  constructor(private boothService: BoothService, private loginService: LoginService) { }
+  constructor(private boothService: BoothService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.boothService.getAvalibleBoothsCount().subscribe(count => this.numberOfNonbookedBooths = count);
@@ -62,6 +63,18 @@ export class BookBoothComponent implements OnInit {
   RemoveFromtobeBooked(booth: Booth) {
     this.boothsToBook = this.boothsToBook.filter(b => b !== booth);
     this.booths.push(booth);
+  }
+
+  BookBooths(){
+    this.boothService.bookBooths(this.boothsToBook).subscribe(
+      () => this.router.navigateByUrl("/user"),
+      error => this.alerts.push({
+      class: "text-center",
+      type: "danger",
+      msgStrong: "Fejl!",
+      msg: error.error,
+      timeout: 5000
+    }));
   }
 
   /**
