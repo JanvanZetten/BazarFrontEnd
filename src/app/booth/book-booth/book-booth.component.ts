@@ -69,15 +69,25 @@ export class BookBoothComponent implements OnInit {
    * @constructor
    */
   BookBooths(){
-    this.boothService.bookBooths(this.boothsToBook).subscribe(
-      () => this.router.navigateByUrl("/user"),
-      error => this.alerts.push({
+    if(this.boothsToBook < 1){
+      this.alerts.push({
         class: "text-center",
-        type: "danger",
+        type: "warning",
         msgStrong: "Fejl!",
-        msg: error.error,
+        msg: "Der er ikke valgt nogle stande",
         timeout: 5000
-      }));
+      });
+    }else{
+      this.boothService.bookBooths(this.boothsToBook).subscribe(
+        () => this.router.navigateByUrl("/user"),
+        error => this.alerts.push({
+          class: "text-center",
+          type: "danger",
+          msgStrong: "Fejl!",
+          msg: error.error,
+          timeout: 5000
+        }));
+    }
   }
 
   /**
