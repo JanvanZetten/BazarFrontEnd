@@ -56,7 +56,7 @@ export class BoothService {
     return this.http.delete<Booth>(this.Url + '/' + id, httpOptions);
   }
 
-  bookBooth(userName: string, token: string): Observable<Booth> {
+  bookBooth(token: string): Observable<Booth> {
     this.setOptions();
     return this.http.post<Booth>(this.Url + '/book',"\"" + token + "\"", httpOptions);
   }
@@ -99,6 +99,14 @@ export class BoothService {
     return this.http.post<Booth[]>(
       this.Url + '/bookBooths',
       {token: this.authenticationService.getToken(), booths: booths},
+      httpOptions);
+  }
+
+  getOnWaitingList(): Observable<number> {
+    this.setOptions();
+    return this.http.post<number>(
+      this.Url + '/setOnWaitinglist',
+      {token: this.authenticationService.getToken()},
       httpOptions);
   }
 }

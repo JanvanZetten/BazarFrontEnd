@@ -14,6 +14,8 @@ export class BookBoothComponent implements OnInit {
   booth: Booth;
   booths: Booth[];
   boothsToBook: Booth[];
+  loading = true;
+  empty = true;
   error = false;
   success = false;
   errorMessage: String;
@@ -36,24 +38,21 @@ export class BookBoothComponent implements OnInit {
     this.boothsToBook = [];
 
     this.boothService.getAvalibleBooths().subscribe(
-      bs => this.booths = bs,
-      error => this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: error.error,
-        timeout: 5000
-      }));
-
+      bs => {
+        this.booths = bs;
+        this.loading = false;
+        this.empty = this.booths.length < 1;
+      },
+      error => {
+        this.alerts.push({
+          class: "text-center",
+          type: "danger",
+          msgStrong: "Fejl!",
+          msg: error.error,
+          timeout: 5000
+        });
+      });
   }
-
-  /* This should be deleted when ready but for testing this is still here.
-  BookBooth() {
-    this.boothService.bookBooth(this.loginService.getUsername(), this.loginService.getToken()).
-    subscribe(booth => {this.booth = booth, this.success = true; },
-        error => {this.error = true, this.errorMessage = error.error});
-  }
-  */
 
   addToBeBooked(booth: Booth) {
     this.booths = this.booths.filter(b => b !== booth);
@@ -65,16 +64,36 @@ export class BookBoothComponent implements OnInit {
     this.booths.push(booth);
   }
 
+  /**
+   * Books the booths in the boothsToBook array with error handling
+   * @constructor
+   */
   BookBooths(){
     this.boothService.bookBooths(this.boothsToBook).subscribe(
       () => this.router.navigateByUrl("/user"),
       error => this.alerts.push({
-      class: "text-center",
-      type: "danger",
-      msgStrong: "Fejl!",
-      msg: error.error,
-      timeout: 5000
-    }));
+        class: "text-center",
+        type: "danger",
+        msgStrong: "Fejl!",
+        msg: error.error,
+        timeout: 5000
+      }));
+  }
+
+  /**
+   * Add a user to the waitinglist with error handling
+   * @constructor
+   */
+  AddToWaitinglist() {
+    this.boothService.getOnWaitingList().subscribe(
+      () => this.router.navigateByUrl("/user"),
+      error => this.alerts.push({
+        class: "text-center",
+        type: "danger",
+        msgStrong: "Fejl!",
+        msg: error.error,
+        timeout: 5000
+      }));
   }
 
   /**
@@ -84,4 +103,6 @@ export class BookBoothComponent implements OnInit {
   onAlertClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
+
+
 }
