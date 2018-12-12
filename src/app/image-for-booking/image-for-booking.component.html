@@ -1,5 +1,12 @@
+<div class="row">
+<div class="col">
 <div *ngIf="imgUrl">
-  <img src="{{imgUrl.url}}" alt="Bord Plan" style="max-width:30%; max-height:30%">
+  <img src="{{imgUrl.url}}" alt="Bord Plan" class="centerPic">
+</div>
+  </div>
+  <div class="col-md-6">
+    <img src="{{imgUrl.url}}" alt="Bord Plan" class="centerPic mt-md-0 mt-3">
+  </div>
 </div>
 <div *ngFor="let alert of alerts">
   <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
