@@ -32,6 +32,8 @@ import {JwtModule} from '@auth0/angular-jwt';
 import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.component';
 import { UserAddComponent } from './admin/user/user-add/user-add.component';
 import { UserEditComponent } from './admin/user/user-edit/user-edit.component';
+import { ImageForBookingComponent } from './image-for-booking/image-for-booking.component';
+
 
 export function jwtTokenGetter() {
   return 'Test';
@@ -57,7 +59,8 @@ export function jwtTokenGetter() {
     UserDeleteComponent,
     EditBoothComponent,
     UserAddComponent,
-    UserEditComponent
+    UserEditComponent,
+    ImageForBookingComponent
   ],
   imports: [
     BrowserModule,
