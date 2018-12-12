@@ -1,34 +1,11 @@
-<!-- Det gamle reservering
-<div class="text-center">
-<h4 *ngIf="numberOfNonbookedBooths > 1">Der er {{numberOfNonbookedBooths}} stande fri</h4>
-
-
-<h4 *ngIf="numberOfNonbookedBooths === 1" > Der er {{numberOfNonbookedBooths}} stand fri </h4>
-
-
-<h4 *ngIf="numberOfNonbookedBooths < 1">Der er ingen stande fri men du kan komme på venteliste</h4>
-</div>
-
-
-<div class="bookbooth text-center mb-1">
-  <button class="btn btn-primary" (click)="BookBooth()" >Reserver Stand</button>
-</div>
-<alert class="text-center" *ngIf="success" type="success">
-  <strong>Succesfuld Reservation</strong> Du har reserveret stand nummer: {{booth.id}}
-</alert>
-<alert class="text-center" *ngIf="error" type="warning">
-  <strong>Der er ikke reserveret en stand</strong> {{errorMessage}}
-</alert>
--->
-
-<div class="row mx-auto" style="max-width: 860px">
+<div *ngIf="!loading && !empty" class="row mx-auto" style="max-width: 860px">
   <div class="col">
     <h5>Tilgængelige stande:</h5>
     <div class="scrollList rounded">
       <table class="w-100 table-striped">
         <tr class="my-3 w-100" *ngFor="let boothItem of booths">
           <td>Stand nummer: {{boothItem.id}}</td>
-          <td><button class="btn btn-primary float-right" (click)="addToBeBooked(boothItem)">Reserver</button></td>
+          <td><button class="btn btn-success float-right" (click)="addToBeBooked(boothItem)"><i class="fas fa-plus"></i></button></td>
         </tr>
       </table>
     </div>
@@ -41,7 +18,7 @@
         <table class="w-100 table-striped">
           <tr class="my-3 w-100" *ngFor="let boothItem of boothsToBook">
             <td>Stand nummer: {{boothItem.id}}</td>
-            <td><button class="btn btn-danger btn-outline float-right" (click)="RemoveFromtobeBooked(boothItem)">X</button></td>
+            <td><button class="btn btn-danger btn-outline float-right" (click)="RemoveFromtobeBooked(boothItem)"><i class="fas fa-times"></i></button></td>
           </tr>
         </table>
       </div>
@@ -50,6 +27,22 @@
   </div>
 </div>
 
+<!-- If there are no booths it should be possible to get on the waiting list-->
+<div class="text-center" *ngIf="!loading && empty">
+  <h5>Der er ingen tilgænglige stande men du kan komme på ventelisten:</h5>
+  <button (click)="AddToWaitinglist()" class="btn btn-lg btn-primary">
+    Kom på venteliste
+  </button>
+  <br>
+  <small>OBS. På ventelisten er det <u>ikke</u> muligt at have flere stande.</small>
+</div>
+
+<!-- Loading when the booths haven't yet arrived-->
+<div *ngIf="loading">
+  <div class="loader mx-auto"></div>
+</div>
+
+<!-- Alerts-->
 <div *ngFor="let alert of alerts">
   <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
 </div>
