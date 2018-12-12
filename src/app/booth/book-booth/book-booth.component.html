@@ -1,8 +1,8 @@
-<div *ngIf="!loading && !empty" class="row mx-auto" style="max-width: 860px">
+<div *ngIf="!loading && !empty" class="row mx-auto text-center" style="max-width: 860px">
   <app-image-for-booking></app-image-for-booking>
-  <div class="col">
+  <div class="col text-center">
     <h5>Tilgængelige stande:</h5>
-    <div class="scrollList rounded">
+    <div class="scrollList rounded mx-auto">
       <table class="w-100 table-striped">
         <tr class="my-3 w-100" *ngFor="let boothItem of booths">
           <td>Stand nummer: {{boothItem.id}}</td>
@@ -14,7 +14,7 @@
 
   <div class="col-md-6">
     <h5>Dine Valg:</h5>
-    <div style="max-width: 400px;">
+    <div class="mx-auto" style="max-width: 400px;">
       <div class="scrollListSmall rounded">
         <table class="w-100 table-striped">
           <tr class="my-3 w-100" *ngFor="let boothItem of boothsToBook">
