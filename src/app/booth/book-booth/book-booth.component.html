@@ -1,5 +1,5 @@
 <div *ngIf="!loading && !empty" class="row mx-auto text-center" style="max-width: 860px">
-  <app-image-for-booking></app-image-for-booking>
+  <app-image-for-booking class="mb-3"></app-image-for-booking>
   <div class="col text-center">
     <h5>Tilgængelige stande:</h5>
     <div class="scrollList rounded mx-auto">
@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6 mt-md-0 mt-2">
     <h5>Dine Valg:</h5>
     <div class="mx-auto" style="max-width: 400px;">
       <div class="scrollListSmall rounded">
@@ -23,7 +23,7 @@
           </tr>
         </table>
       </div>
-      <button class="btn btn-primary offset-4 my-3" (click)="BookBooths()">Reserver stande</button>
+      <button class="btn btn-primary my-3" (click)="BookBooths()">Reserver stande</button>
     </div>
   </div>
 </div>

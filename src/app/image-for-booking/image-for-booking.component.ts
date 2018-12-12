@@ -10,7 +10,9 @@ import {AlertComponent} from 'ngx-bootstrap';
 })
 export class ImageForBookingComponent implements OnInit {
 
-  imgUrl:ImageUrl = null;
+  imgUrl: ImageUrl = null;
+  imgUrl2: ImageUrl = null;
+  notAvailableURL: ImageUrl = new ImageUrl();
   error = false;
   errorMsg:string;
 
@@ -27,14 +29,11 @@ export class ImageForBookingComponent implements OnInit {
 
   ngOnInit()
   {
-    this.imageService.getImage(1).subscribe(i => {this.imgUrl = i; this.error = false},
-      error => {this.error = true; this.errorMsg = error.error; this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: error.error,
-        timeout: 5000
-      })});
+    this.notAvailableURL.url = "assets/img/NotAvailable.JPG";
+    this.imageService.getImage(1).subscribe(i => this.imgUrl = i,
+      error => this.imgUrl = this.notAvailableURL);
+    this.imageService.getImage(2).subscribe(i => this.imgUrl2 = i,
+      error => this.imgUrl2 = this.notAvailableURL);
   }
 
   /**
