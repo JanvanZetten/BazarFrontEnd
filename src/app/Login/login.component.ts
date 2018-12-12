@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {LoginService} from '../shared/services/login.service';
 import {Router} from '@angular/router';
+import {AlertComponent} from "ngx-bootstrap";
 
 
 @Component({
@@ -42,5 +43,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  /**
+   * Removes alert from alert array.
+   * @param dismissedAlert The alert wanted removed.
+   */
+  onAlertClosed(dismissedAlert: AlertComponent): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 }

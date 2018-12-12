@@ -88,4 +88,9 @@ export class BoothService {
     return this.http.post<any>(this.Url + '/cancelWaitingPosition',
       {token: this.authenticationService.getToken()}, httpOptions)
   }
+
+  getAvalibleBooths(): Observable<Booth[]>{
+    this.setOptions();
+    return this.http.get<Booth[]>(this.Url + "/Available", httpOptions);
+  }
 }
