@@ -21,31 +21,33 @@
 </alert>
 -->
 
-<div class="row" style="max-width: 860px">
-<div class="col">
-  <h5>Dine Valg:</h5>
-<div class="scrollListSmall rounded">
-  <table class="w-100 table-striped">
-    <tr class="my-3 w-100" *ngFor="let boothItem of boothsToBook">
-      <td>Stand nummer: {{boothItem.id}}</td>
-      <td><button class="btn btn-danger btn-outline float-right" (click)="RemoveFromtobeBooked(boothItem)">X</button></td>
-    </tr>
-  </table>
-</div>
-<button class="btn btn-primary my-3">Reserver stande</button>
-</div>
+<div class="row mx-auto" style="max-width: 860px">
+  <div class="col">
+    <h5>Tilgængelige stande:</h5>
+    <div class="scrollList rounded">
+      <table class="w-100 table-striped">
+        <tr class="my-3 w-100" *ngFor="let boothItem of booths">
+          <td>Stand nummer: {{boothItem.id}}</td>
+          <td><button class="btn btn-primary float-right" (click)="addToBeBooked(boothItem)">Reserver</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-<div class="col-md">
-<h5>Tilgængelige stande:</h5>
-<div class="scrollList rounded">
-<table class="w-100 table-striped">
-  <tr class="my-3 w-100" *ngFor="let boothItem of booths">
-    <td>Stand nummer: {{boothItem.id}}</td>
-    <td><button class="btn btn-primary float-right" (click)="addToBeBooked(boothItem)">Reserver</button></td>
-  </tr>
-</table>
-</div>
-</div>
+  <div class="col-md-6">
+    <h5>Dine Valg:</h5>
+    <div style="max-width: 400px;">
+      <div class="scrollListSmall rounded">
+        <table class="w-100 table-striped">
+          <tr class="my-3 w-100" *ngFor="let boothItem of boothsToBook">
+            <td>Stand nummer: {{boothItem.id}}</td>
+            <td><button class="btn btn-danger btn-outline float-right" (click)="RemoveFromtobeBooked(boothItem)">X</button></td>
+          </tr>
+        </table>
+      </div>
+      <button class="btn btn-primary offset-4 my-3" (click)="BookBooths()">Reserver stande</button>
+    </div>
+  </div>
 </div>
 
 <div *ngFor="let alert of alerts">

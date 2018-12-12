@@ -93,4 +93,12 @@ export class BoothService {
     this.setOptions();
     return this.http.get<Booth[]>(this.Url + "/Available", httpOptions);
   }
+
+  bookBooths(booths: Booth[]): Observable<Booth[]>{
+    this.setOptions();
+    return this.http.post<Booth[]>(
+      this.Url + '/bookBooths',
+      {token: this.authenticationService.getToken(), booths: booths},
+      httpOptions);
+  }
 }
