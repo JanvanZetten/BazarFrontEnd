@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
     this.loginService.login(username, password).subscribe(sucess => {this.router.navigate(['/']); },
-      error => this.alertMessage.push(true, error.error));
+      error => this.alertMessage.push("danger", "Fejl!", error.error));
   }
 
   ngOnInit() {

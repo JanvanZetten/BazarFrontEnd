@@ -27,7 +27,7 @@ export class AddBoothComponent implements OnInit {
     let boothForm:any = this.boothForm.value;
 
     if(boothForm.amount > this.maxAmountOfBoothsAllowed) {
-      this.alertMessage.push(true, "Et maximum af " + this.maxAmountOfBoothsAllowed + " stande kan blive lavet ad gangen.");
+      this.alertMessage.push("danger", "Fejl!", "Et maximum af " + this.maxAmountOfBoothsAllowed + " stande kan blive lavet ad gangen.");
     }
     else {
       let booth = new Booth();
@@ -39,9 +39,9 @@ export class AddBoothComponent implements OnInit {
 
       this.boothService.addBooth(boothForm.amount, booth).subscribe(
         m => {
-          this.alertMessage.push(false, "Tilføjede " + m.length + " " + (m.length > 1 ? "stande" : "stand") + " til systemet");
+          this.alertMessage.push("success", "Succes!", "Tilføjede " + m.length + " " + (m.length > 1 ? "stande" : "stand") + " til systemet");
           }, error => {
-          this.alertMessage.push(true, error.error);
+          this.alertMessage.push("danger", "Fejl!", error.error);
         });
     }
   }

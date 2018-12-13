@@ -30,15 +30,15 @@ export class CreateUserComponent implements OnInit {
               this.router.navigate(['/']);
             },
             error => {
-              this.alertMessage.push(true, error.error);
+              this.alertMessage.push("danger", "Fejl!", error.error);
             });
       }
       else {
-        this.alertMessage.push(true, "Der skal være både brugernavn og kodeord");
+        this.alertMessage.push("danger", "Fejl!", "Der skal være både brugernavn og kodeord");
       }
     }
     else{
-      this.alertMessage.push(true, "De to kodeord er ikke ens");
+      this.alertMessage.push("danger", "Fejl!", "De to kodeord er ikke ens");
     }
 
   }

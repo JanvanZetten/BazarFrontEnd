@@ -24,7 +24,7 @@ export class BoothListComponent implements OnInit {
     this.boothService.getBoothsIncludeAll().subscribe(booths => {
       this.booths = booths;
     }, error => {
-      this.alertMessage.push(true, error.error);
+      this.alertMessage.push("danger", "Fejl!", error.error);
     });
   }
 
@@ -35,10 +35,10 @@ export class BoothListComponent implements OnInit {
   alertHandler(obs: Observable<any>){
     obs.subscribe(result => {
       this.refresh();
-      this.alertMessage.push(false, "Handling blev udført");
+      this.alertMessage.push("success", "Succes!", "Handling blev udført");
     }, error => {
       this.refresh();
-      this.alertMessage.push(true, error.error);
+      this.alertMessage.push("danger", "Fejl!", error.error);
     })
   }
 }

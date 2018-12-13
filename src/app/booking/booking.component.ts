@@ -17,10 +17,10 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
     this.boothService.getUsersBooking().subscribe(booths => {this.booths = booths},
-      error => {this.alertMessage.push(true, error.error)});
+      error => {this.alertMessage.push("danger", "Fejl!", error.error)});
 
     this.boothService.getUsersPositionInWaitingList().subscribe(
       waitingNum => {this.numberInWaitingList = waitingNum},
-      error => {this.alertMessage.push(true, error.error)});
+      error => {this.alertMessage.push("danger", "Fejl!", error.error)});
   }
 }

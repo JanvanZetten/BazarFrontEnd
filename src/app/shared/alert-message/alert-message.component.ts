@@ -20,11 +20,11 @@ export class AlertMessageComponent implements OnInit {
   ngOnInit() {
   }
 
-  push(isError: boolean, message: string, time: number = 5000): void {
+  push(alertType: string, strongMessage: string, message: string, time: number = 5000): void {
     this.alerts.push({
       class: "text-center",
-      type: isError ? "danger" : "Success",
-      msgStrong: isError ? "Fejl!" : "Succes!",
+      type: alertType,
+      msgStrong: strongMessage,
       msg: message,
       timeout: time
     })
