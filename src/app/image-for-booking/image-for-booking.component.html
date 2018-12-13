@@ -6,10 +6,10 @@
     </div>
   </div>
   <div class="col-md-6 mt-md-0 mt-2">
-    <h5>Hal 2:</h5>
-    <img src="{{imgUrl2.url}}" alt="Bord Plan" class="ml-auto w-100 notToBig">
+    <div *ngIf="imgUrl2">
+      <h5>Hal 2:</h5>
+      <img src="{{imgUrl2.url}}" alt="Bord Plan" class="ml-auto w-100 notToBig">
+    </div>
   </div>
 </div>
-<div *ngFor="let alert of alerts">
-  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
-</div>
+<app-alert-message #alertMessage></app-alert-message>

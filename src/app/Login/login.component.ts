@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {LoginService} from '../shared/services/login.service';
 import {Router} from '@angular/router';
-import {AlertComponent} from "ngx-bootstrap";
+import {AlertMessageComponent} from "../shared/alert-message/alert-message.component";
 
 
 @Component({
@@ -11,20 +11,11 @@ import {AlertComponent} from "ngx-bootstrap";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('', )
   });
-  error = false;
-  errorMessage: string = "Der er sket en fejl"; // Default error message.
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }]; // Array with descriped anonymous alert object.
 
   constructor(private loginService: LoginService, private router: Router) {
   }
@@ -33,23 +24,9 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
     this.loginService.login(username, password).subscribe(sucess => {this.router.navigate(['/']); },
-      error => this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: error.error,
-        timeout: 5000
-      }));
+      error => this.alertMessage.pushError("danger", "Fejl!", error));
   }
 
   ngOnInit() {
-  }
-
-  /**
-   * Removes alert from alert array.
-   * @param dismissedAlert The alert wanted removed.
-   */
-  onAlertClosed(dismissedAlert: AlertComponent): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 }

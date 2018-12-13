@@ -1,6 +1,5 @@
 <div class="text-center">
-  <h3 *ngIf="error">{{errorMessage}}</h3>
-  <div *ngIf="(!error) && (booths != null)">
+  <div *ngIf="(booths != null)">
     <div class="card-deck">
     <li class="cardList" *ngFor="let booth of booths" style="list-style-type: none;" >
       <div class="card" style="width: 18rem;">
@@ -14,11 +13,13 @@
     </li>
   </div>
   </div>
-  <h3 *ngIf="(!error) && (booths == null) && (numberInWaitingList < 1)">Der er ingen reservation.</h3>
-  <div *ngIf="(!error) && (booths == null) && (numberInWaitingList >= 1)">
+  <h3 *ngIf="(booths == null) && (numberInWaitingList < 1)">Der er ingen reservation.</h3>
+  <div *ngIf="(booths == null) && (numberInWaitingList >= 1)">
     <h3>
     Der er ingen reservation. Men du er nummer {{numberInWaitingList}} i køen.
     </h3>
     <app-show-waiting-position></app-show-waiting-position>
   </div>
+
+  <app-alert-message #alertMessage></app-alert-message>
 </div>

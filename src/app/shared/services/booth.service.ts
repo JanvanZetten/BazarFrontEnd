@@ -106,7 +106,7 @@ export class BoothService {
     this.setOptions();
     return this.http.post<number>(
       this.Url + '/setOnWaitinglist',
-      {token: this.authenticationService.getToken()},
+      "\"" + this.authenticationService.getToken() + "\"",
       httpOptions);
   }
 }

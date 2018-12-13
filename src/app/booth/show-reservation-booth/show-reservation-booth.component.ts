@@ -1,8 +1,9 @@
-import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {BoothService} from '../../shared/services/booth.service';
 import {Booth} from '../../shared/model/booth';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import {AlertMessageComponent} from "../../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-show-reservation-booth',
@@ -11,10 +12,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class ShowReservationBoothComponent implements OnInit {
   @Input() public boothId;
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   boothBooked: Booth[];
-  error = false;
-  success = false;
-  errorMessage: String;
   modalRef: BsModalRef;
 
   constructor(private boothService: BoothService, private modalService: BsModalService) {
@@ -22,8 +21,9 @@ export class ShowReservationBoothComponent implements OnInit {
 
   ngOnInit() {
     this.boothService.getUsersBooking().subscribe(booth => this.boothBooked = booth,
-        error => {this.error = true,
-      this.errorMessage = error.error });
+        error => {
+          this.alertMessage.pushError("danger", "Fejl!", error)
+        });
   }
 
   openModal(template: TemplateRef<any>) {
@@ -32,8 +32,13 @@ export class ShowReservationBoothComponent implements OnInit {
 
   confirm() {
     this.boothService.cancelReservation(this.boothId).
-    subscribe(booth => { this.success = true; this.modalRef.hide();},
-      error => { this.error = true; this.errorMessage = error.error; this.modalRef.hide();});
+    subscribe(booth => {
+      this.alertMessage.pushMessage("success", "Succes!", "Det lykkedes at annullere bord nummer: " + this.boothId)
+      this.modalRef.hide();
+    }, error => {
+      this.alertMessage.pushError("warning", "Reservationen af standen blev ikke annulleret", error)
+      this.modalRef.hide();
+    });
   }
 
   decline() {
