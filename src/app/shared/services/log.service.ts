@@ -4,6 +4,7 @@ import {LoginService} from "./login.service";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {Booth} from "../model/booth";
+import {LogItem} from "../model/log";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -25,8 +26,8 @@ export class LogService {
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
   }
 
-  getBooths(): Observable<Booth[]> {
+  getLogItems(): Observable<LogItem[]> {
     this.setOptions();
-    return this.http.get<Booth[]>(this.Url, httpOptions);
+    return this.http.get<LogItem[]>(this.Url, httpOptions);
   }
 }
