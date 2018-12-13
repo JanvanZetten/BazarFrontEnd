@@ -7,7 +7,7 @@ div.scrollList {
   max-width: 400px;
   max-height: 500px;
   min-height: 200px;
-  overflow-y: auto;
+  overflow-y: scroll;
   box-shadow: 4px 4px 15px -8px rgba(0,0,0,0.5);
 }
 
@@ -15,7 +15,7 @@ div.scrollListSmall {
   min-height: 200px;
   max-height: 500px;
   background-color: transparent;
-  overflow-y: auto;
+  overflow-y: scroll;
   box-shadow: 4px 4px 15px -8px rgba(0,0,0,0.5);
 }
 

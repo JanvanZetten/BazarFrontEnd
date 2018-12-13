@@ -34,6 +34,7 @@ import { UserAddComponent } from './admin/user/user-add/user-add.component';
 import { UserEditComponent } from './admin/user/user-edit/user-edit.component';
 import { ImageForBookingComponent } from './image-for-booking/image-for-booking.component';
 import { LogComponent } from './admin/log/log.component';
+import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
 
 
 export function jwtTokenGetter() {
@@ -62,7 +63,8 @@ export function jwtTokenGetter() {
     UserAddComponent,
     UserEditComponent,
     ImageForBookingComponent,
-    LogComponent
+    LogComponent,
+    AlertMessageComponent
   ],
   imports: [
     BrowserModule,

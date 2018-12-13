@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ImageUrl} from '../shared/model/ImageUrl';
 import {ImageService} from '../shared/services/image-service';
 import {AlertComponent} from 'ngx-bootstrap';
+import {AlertMessageComponent} from "../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-image-for-booking',
@@ -9,20 +10,10 @@ import {AlertComponent} from 'ngx-bootstrap';
   styleUrls: ['./image-for-booking.component.css']
 })
 export class ImageForBookingComponent implements OnInit {
-
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   imgUrl: ImageUrl = null;
   imgUrl2: ImageUrl = null;
   notAvailableURL: ImageUrl = new ImageUrl();
-  error = false;
-  errorMsg:string;
-
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }];
 
 
   constructor(private imageService:ImageService) { }
@@ -34,13 +25,5 @@ export class ImageForBookingComponent implements OnInit {
       error => this.imgUrl = this.notAvailableURL);
     this.imageService.getImage(2).subscribe(i => this.imgUrl2 = i,
       error => this.imgUrl2 = this.notAvailableURL);
-  }
-
-  /**
-   * Removes alert from alert array.
-   * @param dismissedAlert The alert wanted removed.
-   */
-  onAlertClosed(dismissedAlert: AlertComponent): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 }
