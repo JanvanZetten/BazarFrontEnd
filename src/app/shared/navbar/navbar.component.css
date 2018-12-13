@@ -30,3 +30,13 @@ img {
   height: 30px;
   width: auto;
 }
+
+.vl {
+   border-left: 1px solid dimgray;
+   height: 40px;
+ }
+
+.hl {
+  border-top: 1px solid dimgray;
+  width: 120px;
+}
