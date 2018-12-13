@@ -1,5 +1,5 @@
 <h4>Handlinger:</h4>
-<table class="table table-striped table-bordered">
+<table *ngIf="logItems" class="table table-striped table-bordered">
   <thead>
   <tr>
     <th scope="col">#</th>
@@ -19,3 +19,4 @@
   </tbody>
 
 </table>
+<app-alert-message #alertMessage></app-alert-message>
