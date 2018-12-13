@@ -4,7 +4,7 @@
     <h5>Tilgængelige stande:</h5>
     <div class="scrollList rounded mx-auto">
       <table class="w-100 table-striped">
-        <tr class="my-3 w-100" *ngFor="let boothItem of booths">
+        <tr class="my-3 w-100" *ngFor="let boothItem of sort(booths)">
           <td>Stand nummer: {{boothItem.id}}</td>
           <td><button class="btn btn-success float-right" (click)="addToBeBooked(boothItem)"><i class="fas fa-plus"></i></button></td>
         </tr>
@@ -17,7 +17,7 @@
     <div class="mx-auto" style="max-width: 400px;">
       <div class="scrollListSmall rounded">
         <table class="w-100 table-striped">
-          <tr class="my-3 w-100" *ngFor="let boothItem of boothsToBook">
+          <tr class="my-3 w-100" *ngFor="let boothItem of sort(boothsToBook)">
             <td>Stand nummer: {{boothItem.id}}</td>
             <td><button class="btn btn-danger btn-outline float-right" (click)="RemoveFromtobeBooked(boothItem)"><i class="fas fa-times"></i></button></td>
           </tr>
@@ -44,6 +44,4 @@
 </div>
 
 <!-- Alerts-->
-<div *ngFor="let alert of alerts">
-  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
-</div>
+<app-alert-message #alertMessage></app-alert-message>

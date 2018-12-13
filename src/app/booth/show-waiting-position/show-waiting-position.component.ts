@@ -1,6 +1,7 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {BoothService} from '../../shared/services/booth.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {AlertMessageComponent} from "../../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-show-waiting-position',
@@ -8,12 +9,9 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
   styleUrls: ['./show-waiting-position.component.css']
 })
 export class ShowWaitingPositionComponent implements OnInit {
-
-  message:string;
-  error = false;
-  success = false;
-  errorMessage: String;
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   modalRef: BsModalRef;
+
   constructor(private boothService:BoothService, private modalService:BsModalService) { }
 
   ngOnInit() {
@@ -26,15 +24,11 @@ export class ShowWaitingPositionComponent implements OnInit {
   confirm()
   {
     this.boothService.cancelWaitingListPosition().subscribe(msg => {
-        this.message = msg, this.error = false
-      this.success = true;
+        this.alertMessage.pushMessage("success", "Succes!", "Det lykkedes at annullere din position i ventelisten");
         this.modalRef.hide();
       },
       error => {
-        if (this.error == null) {
-          this.errorMessage = error.error,
-            this.error = true;
-        }
+        this.alertMessage.pushError("warning", "Positionen blev ikke annulleret!", error)
       });
   }
   decline() {
