@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertComponent} from "ngx-bootstrap";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-alert-message',
@@ -16,7 +15,7 @@ export class AlertMessageComponent implements OnInit {
     timeout: 1
   }]; // Array with described anonymous alert object.
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   }
