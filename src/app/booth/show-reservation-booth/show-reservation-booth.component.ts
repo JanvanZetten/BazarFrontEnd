@@ -22,7 +22,7 @@ export class ShowReservationBoothComponent implements OnInit {
   ngOnInit() {
     this.boothService.getUsersBooking().subscribe(booth => this.boothBooked = booth,
         error => {
-          this.alertMessage.push("danger", "Fejl!", error.error)
+          this.alertMessage.pushError("danger", "Fejl!", error)
         });
   }
 
@@ -33,10 +33,10 @@ export class ShowReservationBoothComponent implements OnInit {
   confirm() {
     this.boothService.cancelReservation(this.boothId).
     subscribe(booth => {
-      this.alertMessage.push("success", "Succes!", "Det lykkedes at annullere bord nummer: " + this.boothId)
+      this.alertMessage.pushMessage("success", "Succes!", "Det lykkedes at annullere bord nummer: " + this.boothId)
       this.modalRef.hide();
     }, error => {
-      this.alertMessage.push("warning", "Reservationen af standen blev ikke annulleret", error.error)
+      this.alertMessage.pushError("warning", "Reservationen af standen blev ikke annulleret", error)
       this.modalRef.hide();
     });
   }

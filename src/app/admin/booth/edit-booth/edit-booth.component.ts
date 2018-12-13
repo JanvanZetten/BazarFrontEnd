@@ -45,7 +45,7 @@ export class EditBoothComponent implements OnInit {
     this.booth.booker = user;
     this.boothService.updateBooth(this.booth).subscribe(
       () => this.router.navigateByUrl('admin/booths'),
-      error => this.alertMessage.push("danger", "Fejl!", error.error)
+      error => this.alertMessage.pushError("danger", "Fejl!", error)
     );
   }
 }

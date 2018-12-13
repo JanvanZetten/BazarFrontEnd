@@ -34,7 +34,7 @@ export class BookBoothComponent implements OnInit {
         this.empty = this.booths.length < 1;
       },
       error => {
-        this.alertMessage.push("danger", "Fejl!", error.error)
+        this.alertMessage.pushError("danger", "Fejl!", error)
       });
   }
 
@@ -54,11 +54,11 @@ export class BookBoothComponent implements OnInit {
    */
   BookBooths(){
     if (this.boothsToBook.length < 1){
-      this.alertMessage.push("danger", "Fejl!", "Der er ikke valgt nogle stande");
+      this.alertMessage.pushMessage("warning", "Fejl!", "Der er ikke valgt nogle stande");
     } else {
       this.boothService.bookBooths(this.boothsToBook).subscribe(
         () => this.router.navigateByUrl("/user"),
-        error => this.alertMessage.push("warning", "Fejl!", error.error)
+        error => this.alertMessage.pushError("danger", "Fejl!", error)
       );
     }
   }
@@ -70,7 +70,7 @@ export class BookBoothComponent implements OnInit {
   AddToWaitinglist() {
     this.boothService.getOnWaitingList().subscribe(
       () => this.router.navigateByUrl("/user"),
-      error => this.alertMessage.push("danger", "Fejl!", error.error)
+      error => this.alertMessage.pushError("danger", "Fejl!", error)
     );
   }
 

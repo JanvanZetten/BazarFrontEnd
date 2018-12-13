@@ -24,11 +24,11 @@ export class ShowWaitingPositionComponent implements OnInit {
   confirm()
   {
     this.boothService.cancelWaitingListPosition().subscribe(msg => {
-        this.alertMessage.push("success", "Succes!", "Det lykkedes at annullere din position i ventelisten");
+        this.alertMessage.pushMessage("success", "Succes!", "Det lykkedes at annullere din position i ventelisten");
         this.modalRef.hide();
       },
       error => {
-        this.alertMessage.push("warning", "Positionen blev ikke annulleret!", error.error)
+        this.alertMessage.pushError("warning", "Positionen blev ikke annulleret!", error)
       });
   }
   decline() {
