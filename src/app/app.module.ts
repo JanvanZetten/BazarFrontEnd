@@ -36,6 +36,7 @@ import { ImageForBookingComponent } from './image-for-booking/image-for-booking.
 import { UpdateImageComponent } from './admin/utilities/update-image/update-image.component';
 import { UtilitiesMainComponent } from './admin/utilities/utilities-main/utilities-main.component';
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
+import { RestartComponent } from './admin/utilities/restart/restart.component';
 
 
 export function jwtTokenGetter() {
@@ -66,7 +67,8 @@ export function jwtTokenGetter() {
     ImageForBookingComponent,
     UpdateImageComponent,
     UtilitiesMainComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    RestartComponent
   ],
   imports: [
     BrowserModule,

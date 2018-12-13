@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Booth} from "../../../shared/model/booth";
 import {BoothService} from "../../../shared/services/booth.service";
 import {Observable} from "rxjs";
-import {AlertComponent} from "ngx-bootstrap";
 import {AlertMessageComponent} from "../../../shared/alert-message/alert-message.component";
 
 @Component({
