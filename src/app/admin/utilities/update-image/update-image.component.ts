@@ -18,14 +18,6 @@ export class UpdateImageComponent implements OnInit {
     url: new FormControl('')
     });
 
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }]; // Array with descriped anonymous alert object.
-
   constructor(private imageServ: ImageService) { }
 
   ngOnInit() { }
@@ -38,7 +30,7 @@ export class UpdateImageComponent implements OnInit {
     imageUrl.url = imageForm.url;
 
     this.imageServ.updateImage(imageUrl).subscribe(m => {
-      this.alertMessage.pushMessage("Success", "Succes!", "Billede nyt billede til billede med id på " + m.id + ".");
+      this.alertMessage.pushMessage("Success", "Succes!", "Billede med id på " + m.id + " er blevet opdateret.");
 
     }, e => {
       this.alertMessage.pushError("danger", "Fejl!", e);

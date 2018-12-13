@@ -32,11 +32,11 @@ img {
 }
 
 .vl {
-   border-left: 1px solid lightgrey;
+   border-left: 1px solid dimgray;
    height: 40px;
  }
 
 .hl {
-  border-top: 1px solid lightgrey;
+  border-top: 1px solid dimgray;
   width: 120px;
 }

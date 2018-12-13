@@ -1,15 +1,16 @@
 <div  style="width: 400px;">
   <form [formGroup]="imageForm" (ngSubmit)="update()">
 
-    Opdater billeder på siden
+    <h4>Opdater billeder på siden</h4>
     <div class="form-group">
       <label>
         Billed id:
       </label>
-      <input class="form-control" type="number" placeholder="Billed id" formControlName="id">
-      <small class="form-text text-muted">
-        Spørg administrator for id til hvert billede hvis du ikke kender til dette.
-      </small>
+      <select class="form-control" type="number" formControlName="id">
+        <!-- HERE GOES NEW IMAGE OPTIONS -->
+        <option value="1">Hal 1</option>
+        <option value="2">Hal 2</option>
+      </select>
     </div>
 
     <div class="form-group">
@@ -18,7 +19,7 @@
       </label>
       <input class="form-control" type="string" placeholder="Indsæt direkte link til billede" formControlName="url">
       <small class="form-text text-muted">
-        Kun billeder af følgende filtyper er tilladt: | .png | .jpg | .jpeg | .gif |
+        Kun billeder af følgende filtyper er tilladt: png, jpg, jpeg og gif
       </small>
     </div>
 
