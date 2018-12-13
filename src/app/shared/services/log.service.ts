@@ -26,7 +26,7 @@ export class LogService {
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
   }
 
-  getLogItems(): Observable<LogItem[]> {
+  public getLogItems(): Observable<LogItem[]> {
     this.setOptions();
     return this.http.get<LogItem[]>(this.Url, httpOptions);
   }

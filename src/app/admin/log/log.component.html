@@ -1,3 +1,21 @@
-<p>
-  log works!
-</p>
+<h4>Handlinger:</h4>
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Besked</th>
+    <th scope="col">Bruger</th>
+    <th scope="col">Dato</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let logItem of logItems">
+    <th scope="row">{{logItem.id}}</th>
+    <td>{{logItem.message}}</td>
+    <td>{{logItem.user}}</td>
+    <td>{{logItem.date}}</td>
+  </tr>
+
+  </tbody>
+
+</table>
