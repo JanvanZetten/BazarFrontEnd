@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {BoothService} from '../../shared/services/booth.service';
 import {LoginService} from '../../shared/services/login.service';
 import {Booth} from '../../shared/model/booth';
+import {AlertComponent} from "ngx-bootstrap";
+import {Router} from "@angular/router";
+import {AlertMessageComponent} from "../../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-book-booth',
@@ -9,22 +12,77 @@ import {Booth} from '../../shared/model/booth';
   styleUrls: ['./book-booth.component.css']
 })
 export class BookBoothComponent implements OnInit {
-booth: Booth;
-error = false;
-success = false;
-errorMessage: String;
-numberOfNonbookedBooths: number;
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
+  booth: Booth;
+  booths: Booth[];
+  boothsToBook: Booth[];
+  loading = true;
+  empty = true;
+  numberOfNonbookedBooths: number;
 
-
-  constructor(private boothService: BoothService, private loginService: LoginService) { }
+  constructor(private boothService: BoothService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.boothService.getAvalibleBoothsCount().subscribe(count => this.numberOfNonbookedBooths = count);
+    this.booths = [];
+    this.boothsToBook = [];
+
+    this.boothService.getAvalibleBooths().subscribe(
+      bs => {
+        this.booths = bs;
+        this.loading = false;
+        this.empty = this.booths.length < 1;
+      },
+      error => {
+        this.alertMessage.pushError("danger", "Fejl!", error)
+      });
   }
 
-  BookBooth() {
-    this.boothService.bookBooth(this.loginService.getUsername(), this.loginService.getToken()).
-    subscribe(booth => {this.booth = booth, this.success = true; },
-        error => {this.error = true, this.errorMessage = error.error});
+  addToBeBooked(booth: Booth) {
+    this.booths = this.booths.filter(b => b !== booth);
+    this.boothsToBook.push(booth);
   }
+
+  RemoveFromtobeBooked(booth: Booth) {
+    this.boothsToBook = this.boothsToBook.filter(b => b !== booth);
+    this.booths.push(booth);
+  }
+
+  /**
+   * Books the booths in the boothsToBook array with error handling
+   * @constructor
+   */
+  BookBooths(){
+    if (this.boothsToBook.length < 1){
+      this.alertMessage.pushMessage("warning", "Fejl!", "Der er ikke valgt nogle stande");
+    } else {
+      this.boothService.bookBooths(this.boothsToBook).subscribe(
+        () => this.router.navigateByUrl("/user"),
+        error => this.alertMessage.pushError("danger", "Fejl!", error)
+      );
+    }
+  }
+
+  /**
+   * Add a user to the waitinglist with error handling
+   * @constructor
+   */
+  AddToWaitinglist() {
+    this.boothService.getOnWaitingList().subscribe(
+      () => this.router.navigateByUrl("/user"),
+      error => this.alertMessage.pushError("danger", "Fejl!", error)
+    );
+  }
+
+  /**
+   * Sort list of booths by id.
+   * @param list List wanted sorted.
+   * @return Sorted list.
+   */
+  sort(list: Booth[]): Booth[]{
+    return list.sort(function(a,b){
+      return a.id-b.id;
+    });
+  }
+
 }

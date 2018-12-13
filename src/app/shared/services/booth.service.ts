@@ -56,7 +56,7 @@ export class BoothService {
     return this.http.delete<Booth>(this.Url + '/' + id, httpOptions);
   }
 
-  bookBooth(userName: string, token: string): Observable<Booth> {
+  bookBooth(token: string): Observable<Booth> {
     this.setOptions();
     return this.http.post<Booth>(this.Url + '/book',"\"" + token + "\"", httpOptions);
   }
@@ -87,5 +87,26 @@ export class BoothService {
     this.setOptions();
     return this.http.post<any>(this.Url + '/cancelWaitingPosition',
       {token: this.authenticationService.getToken()}, httpOptions)
+  }
+
+  getAvalibleBooths(): Observable<Booth[]>{
+    this.setOptions();
+    return this.http.get<Booth[]>(this.Url + "/Available", httpOptions);
+  }
+
+  bookBooths(booths: Booth[]): Observable<Booth[]>{
+    this.setOptions();
+    return this.http.post<Booth[]>(
+      this.Url + '/bookBooths',
+      {token: this.authenticationService.getToken(), booths: booths},
+      httpOptions);
+  }
+
+  getOnWaitingList(): Observable<number> {
+    this.setOptions();
+    return this.http.post<number>(
+      this.Url + '/setOnWaitinglist',
+      "\"" + this.authenticationService.getToken() + "\"",
+      httpOptions);
   }
 }

@@ -6,18 +6,20 @@
 
     <div class="form-group">
       <label>Brugernavn:</label>
-      <input type="text" class="form-control" formControlName="username" placeholder="Brugernavn...">
+      <input type="text" autocomplete="username" class="form-control" formControlName="username" placeholder="Brugernavn...">
     </div>
     <div class="form-group">
       <label>Kodeord:</label>
-      <input type="password" class="form-control" formControlName="password" placeholder="Kodeord...">
+      <input type="password" autocomplete="new-password" class="form-control" formControlName="password" placeholder="Kodeord...">
     </div>
     <div class="form-group">
       <label>Gentag kodeord:</label>
-      <input type="password" class="form-control" formControlName="passwordRepeated" placeholder="Gentag kodeord...">
+      <input type="password" autocomplete="new-password" class="form-control" formControlName="passwordRepeated" placeholder="Gentag kodeord...">
     </div>
 
     <button type="submit" class="btn btn-primary mb-2">Opret bruger</button>
+
+    <app-alert-message #alertMessage></app-alert-message>
 
     <alert class="text-center" *ngIf="error" type="danger">
       <strong>Det var ikke muligt at oprette din bruger.</strong> {{errorMessage}}
