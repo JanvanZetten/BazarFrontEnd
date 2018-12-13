@@ -1,4 +1,5 @@
 <h4>Handlinger:</h4>
+<div class="h-75" style="overflow: auto">
 <table *ngIf="logItems" class="table table-striped table-bordered">
   <thead>
   <tr>
@@ -12,11 +13,13 @@
   <tr *ngFor="let logItem of logItems">
     <th scope="row">{{logItem.id}}</th>
     <td>{{logItem.message}}</td>
-    <td>{{logItem.user}}</td>
-    <td>{{logItem.date}}</td>
+    <td>#{{logItem.user.id}}, {{logItem.user.username}}</td>
+    <td>{{logItem.date | date: 'medium'}}</td>
   </tr>
 
   </tbody>
 
 </table>
+
 <app-alert-message #alertMessage></app-alert-message>
+</div>
