@@ -30,7 +30,7 @@ export class UpdateImageComponent implements OnInit {
     imageUrl.url = imageForm.url;
 
     this.imageServ.updateImage(imageUrl).subscribe(m => {
-      this.alertMessage.pushMessage("Success", "Succes!", "Billede   er blevet opdateret.");
+      this.alertMessage.pushMessage("Success", "Succes!", "Billede er blevet opdateret.");
 
     }, e => {
       this.alertMessage.pushError("danger", "Fejl!", e);
