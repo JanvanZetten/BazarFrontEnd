@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {BoothService} from '../../shared/services/booth.service';
 import {LoginService} from '../../shared/services/login.service';
 import {Booth} from '../../shared/model/booth';
 import {AlertComponent} from "ngx-bootstrap";
 import {Router} from "@angular/router";
+import {AlertMessageComponent} from "../../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-book-booth',
@@ -11,24 +12,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./book-booth.component.css']
 })
 export class BookBoothComponent implements OnInit {
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   booth: Booth;
   booths: Booth[];
   boothsToBook: Booth[];
   loading = true;
   empty = true;
-  error = false;
-  success = false;
-  errorMessage: String;
   numberOfNonbookedBooths: number;
-
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }]; // Array with descriped anonymous alert object.
-
 
   constructor(private boothService: BoothService, private loginService: LoginService, private router: Router) { }
 
@@ -44,13 +34,7 @@ export class BookBoothComponent implements OnInit {
         this.empty = this.booths.length < 1;
       },
       error => {
-        this.alerts.push({
-          class: "text-center",
-          type: "danger",
-          msgStrong: "Fejl!",
-          msg: error.error,
-          timeout: 5000
-        });
+        this.alertMessage.push(true, error.error)
       });
   }
 
@@ -69,24 +53,13 @@ export class BookBoothComponent implements OnInit {
    * @constructor
    */
   BookBooths(){
-    if(this.boothsToBook < 1){
-      this.alerts.push({
-        class: "text-center",
-        type: "warning",
-        msgStrong: "Fejl!",
-        msg: "Der er ikke valgt nogle stande",
-        timeout: 5000
-      });
-    }else{
+    if (this.boothsToBook.length < 1){
+      this.alertMessage.push(true, "Der er ikke valgt nogle stande");
+    } else {
       this.boothService.bookBooths(this.boothsToBook).subscribe(
         () => this.router.navigateByUrl("/user"),
-        error => this.alerts.push({
-          class: "text-center",
-          type: "danger",
-          msgStrong: "Fejl!",
-          msg: error.error,
-          timeout: 5000
-        }));
+        error => this.alertMessage.push(true, error.error)
+      );
     }
   }
 
@@ -97,22 +70,19 @@ export class BookBoothComponent implements OnInit {
   AddToWaitinglist() {
     this.boothService.getOnWaitingList().subscribe(
       () => this.router.navigateByUrl("/user"),
-      error => this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: error.error,
-        timeout: 5000
-      }));
+      error => this.alertMessage.push(true, error.error)
+    );
   }
 
   /**
-   * Removes alert from alert array.
-   * @param dismissedAlert The alert wanted removed.
+   * Sort list of booths by id.
+   * @param list List wanted sorted.
+   * @return Sorted list.
    */
-  onAlertClosed(dismissedAlert: AlertComponent): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+  sort(list: Booth[]): Booth[]{
+    return list.sort(function(a,b){
+      return a.id-b.id;
+    });
   }
-
 
 }

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {RegisterService} from "../../../shared/services/register.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BoothService} from "../../../shared/services/booth.service";
 import {UserService} from "../../../shared/services/user.service";
 import {User} from "../../../shared/model/user";
+import {AlertMessageComponent} from "../../../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-user-edit',
@@ -12,6 +13,7 @@ import {User} from "../../../shared/model/user";
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   id: number;
   userForm = new FormGroup({
     username: new FormControl(''),
@@ -19,13 +21,6 @@ export class UserEditComponent implements OnInit {
     passwordRepeated: new FormControl(''),
     isAdmin: new FormControl('')
   });
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }]; // Array with descriped anonymous alert object.
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -56,33 +51,15 @@ export class UserEditComponent implements OnInit {
               this.router.navigate(['/admin/users']);
             },
             error => {
-              this.alerts.push({
-                class: "text-center",
-                type: "danger",
-                msgStrong: "Fejl!",
-                msg: error.error,
-                timeout: 5000
-              });
+              this.alertMessage.push(true, error.error)
             });
       }
       else {
-        this.alerts.push({
-          class: "text-center",
-          type: "danger",
-          msgStrong: "Fejl!",
-          msg: "Der skal være både brugernavn og kodeord",
-          timeout: 5000
-        });
+        this.alertMessage.push(true, "Der skal være både brugernavn og kodeord");
       }
     }
     else {
-      this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: "De to kodeord er ikke ens",
-        timeout: 5000
-      });
+      this.alertMessage.push(true, "De to kodeord er ikke ens");
     }
   }
 }

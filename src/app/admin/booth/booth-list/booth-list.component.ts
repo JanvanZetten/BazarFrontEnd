@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Booth} from "../../../shared/model/booth";
 import {BoothService} from "../../../shared/services/booth.service";
 import {Observable} from "rxjs";
 import {AlertComponent} from "ngx-bootstrap";
+import {AlertMessageComponent} from "../../../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-booth-list',
@@ -10,16 +11,8 @@ import {AlertComponent} from "ngx-bootstrap";
   styleUrls: ['./booth-list.component.css']
 })
 export class BoothListComponent implements OnInit {
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   booths: Booth[]
-  errorMessage: string = "Der er sket en fejl"; // Default error message.
-  confirmationMessage: string = "Handling blev udført"; // Default confirmation message.
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }]; // Array with descriped anonymous alert object.
 
   constructor(private boothService: BoothService) { }
 
@@ -31,7 +24,7 @@ export class BoothListComponent implements OnInit {
     this.boothService.getBoothsIncludeAll().subscribe(booths => {
       this.booths = booths;
     }, error => {
-      this.errorMessage = error.error;
+      this.alertMessage.push(true, error.error);
     });
   }
 
@@ -42,30 +35,10 @@ export class BoothListComponent implements OnInit {
   alertHandler(obs: Observable<any>){
     obs.subscribe(result => {
       this.refresh();
-      this.alerts.push({
-        class: "text-center",
-        type: "success",
-        msgStrong: "Succes!",
-        msg: this.confirmationMessage + ".",
-        timeout: 5000
-      });
+      this.alertMessage.push(false, "Handling blev udført");
     }, error => {
       this.refresh();
-      this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: this.errorMessage + ".",
-        timeout: 5000
-      });
+      this.alertMessage.push(true, error.error);
     })
-  }
-
-  /**
-   * Removes alert from alert array.
-   * @param dismissedAlert The alert wanted removed.
-   */
-  onAlertClosed(dismissedAlert: AlertComponent): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 }

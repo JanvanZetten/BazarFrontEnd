@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {RegisterService} from "../../../shared/services/register.service";
 import {Router} from "@angular/router";
 import {AlertComponent} from "ngx-bootstrap";
+import {AlertMessageComponent} from "../../../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-user-add',
@@ -10,19 +11,13 @@ import {AlertComponent} from "ngx-bootstrap";
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent implements OnInit {
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   userForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
     passwordRepeated: new FormControl(''),
     isAdmin: new FormControl('')
   });
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }]; // Array with descriped anonymous alert object.
 
   constructor(private registerService: RegisterService, private router: Router) { }
 
@@ -37,41 +32,15 @@ export class UserAddComponent implements OnInit {
               this.router.navigate(['/admin/users']);
             },
             error => {
-              this.alerts.push({
-                class: "text-center",
-                type: "danger",
-                msgStrong: "Fejl!",
-                msg: error.error,
-                timeout: 5000
-              });
+              this.alertMessage.push(true, error.error);
             });
       }
       else {
-        this.alerts.push({
-          class: "text-center",
-          type: "danger",
-          msgStrong: "Fejl!",
-          msg: "Der skal være både brugernavn og kodeord",
-          timeout: 5000
-        });
+        this.alertMessage.push(true, "Der skal være både brugernavn og kodeord");
       }
     }
     else {
-      this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: "De to kodeord er ikke ens",
-        timeout: 5000
-      });
+      this.alertMessage.push(true, "De to kodeord er ikke ens");
     }
-  }
-
-  /**
-   * Removes alert from alert array.
-   * @param dismissedAlert The alert wanted removed.
-   */
-  onAlertClosed(dismissedAlert: AlertComponent): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 }

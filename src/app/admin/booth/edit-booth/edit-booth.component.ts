@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Booth} from "../../../shared/model/booth";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BoothService} from "../../../shared/services/booth.service";
@@ -6,6 +6,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {User} from "../../../shared/model/user";
 import {Observable} from "rxjs";
 import {AlertComponent} from "ngx-bootstrap";
+import {AlertMessageComponent} from "../../../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-edit-booth',
@@ -13,20 +14,12 @@ import {AlertComponent} from "ngx-bootstrap";
   styleUrls: ['./edit-booth.component.css']
 })
 export class EditBoothComponent implements OnInit {
-
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   id: number;
   booth: Booth;
   boothForm = new FormGroup({
     booker: new FormControl('')
   });
-  errorMessage: string = "Der er sket en fejl"; // Default error message.
-  alerts: any[] = [{
-    class: "",
-    type: "",
-    msgStrong: "",
-    msg: "",
-    timeout: 1
-  }]; // Array with descriped anonymous alert object.
 
   constructor(private route: ActivatedRoute,
               private boothService: BoothService,
@@ -52,22 +45,7 @@ export class EditBoothComponent implements OnInit {
     this.booth.booker = user;
     this.boothService.updateBooth(this.booth).subscribe(
       () => this.router.navigateByUrl('admin/booths'),
-      error => this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: error.error,
-        timeout: 5000
-      })
+      error => this.alertMessage.push(true, error.error)
     );
-  }
-
-
-  /**
-   * Removes alert from alert array.
-   * @param dismissedAlert The alert wanted removed.
-   */
-  onAlertClosed(dismissedAlert: AlertComponent): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 }

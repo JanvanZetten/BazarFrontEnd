@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {BoothService} from '../shared/services/booth.service';
 import {Booth} from '../shared/model/booth';
+import {AlertMessageComponent} from "../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-booking',
@@ -8,28 +9,18 @@ import {Booth} from '../shared/model/booth';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   booths:Booth[];
-  error = true;
-  errorMessage: string;
   numberInWaitingList = -1;
   message: string;
   constructor(private boothService: BoothService) { }
 
   ngOnInit() {
-    this.boothService.getUsersBooking().subscribe(booths => {this.booths = booths, this.error = false},
-      error => {this.errorMessage = error.error});
+    this.boothService.getUsersBooking().subscribe(booths => {this.booths = booths},
+      error => {this.alertMessage.push(true, error.error)});
 
     this.boothService.getUsersPositionInWaitingList().subscribe(
-      waitingNum => {this.numberInWaitingList = waitingNum, this.error = false},
-      error => {
-        if(this.error == null){
-          this.errorMessage = error.error
-        }
-      }
-    );
-
+      waitingNum => {this.numberInWaitingList = waitingNum},
+      error => {this.alertMessage.push(true, error.error)});
   }
-
-
 }

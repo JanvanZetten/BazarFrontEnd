@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {RegisterService} from "../shared/services/register.service";
 import {Router} from "@angular/router";
+import {AlertMessageComponent} from "../shared/alert-message/alert-message.component";
 
 @Component({
   selector: 'app-create-user',
@@ -9,13 +10,12 @@ import {Router} from "@angular/router";
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   addUserLoginForm = new FormGroup({
-  username: new FormControl(''),
-  password: new FormControl(''),
-  passwordRepeated: new FormControl('')
-});
-  error = false;
-  errorMessage: String;
+    username: new FormControl(''),
+    password: new FormControl(''),
+    passwordRepeated: new FormControl('')
+  });
 
   constructor(private registerService: RegisterService, private router: Router) { }
 
@@ -30,17 +30,15 @@ export class CreateUserComponent implements OnInit {
               this.router.navigate(['/']);
             },
             error => {
-              this.errorMessage = error.error, this.error = true
+              this.alertMessage.push(true, error.error);
             });
       }
       else {
-        this.errorMessage = "Der skal være både brugernavn og kodeord";
-        this.error = true;
+        this.alertMessage.push(true, "Der skal være både brugernavn og kodeord");
       }
     }
     else{
-      this.errorMessage = "De to kodeord er ikke ens";
-      this.error = true;
+      this.alertMessage.push(true, "De to kodeord er ikke ens");
     }
 
   }

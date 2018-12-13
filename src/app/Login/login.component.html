@@ -2,18 +2,16 @@
   <form [formGroup]="loginForm" (ngSubmit)="Login()">
     <div class="form-group">
       <label>Brugernavn:</label>
-      <input type="text" class="form-control" formControlName="username" placeholder="Skriv brugernavn...">
+      <input type="text" autocomplete="username" class="form-control" formControlName="username" placeholder="Skriv brugernavn...">
     </div>
     <div class="form-group">
       <label>Kodeord:</label>
-      <input type="password" class="form-control" formControlName="password" placeholder="Skriv kodeord...">
+      <input type="password" autocomplete="current-password" class="form-control" formControlName="password" placeholder="Skriv kodeord...">
     </div>
 
     <button type="submit" class="btn btn-primary mb-3">Login</button>
 
-    <div *ngFor="let alert of alerts">
-      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
-    </div>
+    <app-alert-message #alertMessage></app-alert-message>
 
     <p><a routerLink="/createUser">Opret bruger</a></p>
   </form>
