@@ -3,6 +3,7 @@ import {ImageUrl} from '../shared/model/ImageUrl';
 import {ImageService} from '../shared/services/image-service';
 import {AlertComponent} from 'ngx-bootstrap';
 import {AlertMessageComponent} from "../shared/alert-message/alert-message.component";
+import {AdminGuardService} from '../shared/services/admin-guard.service';
 
 @Component({
   selector: 'app-image-for-booking',
@@ -16,7 +17,7 @@ export class ImageForBookingComponent implements OnInit {
   notAvailableURL: ImageUrl = new ImageUrl();
 
 
-  constructor(private imageService:ImageService) { }
+  constructor(private imageService:ImageService, private adminGuardService: AdminGuardService) { }
 
   ngOnInit()
   {
@@ -25,5 +26,10 @@ export class ImageForBookingComponent implements OnInit {
       error => this.imgUrl = this.notAvailableURL);
     this.imageService.getImage(2).subscribe(i => this.imgUrl2 = i,
       error => this.imgUrl2 = this.notAvailableURL);
+  }
+
+  ifAdministrator()
+  {
+    return this.adminGuardService.ifAdministrator();
   }
 }

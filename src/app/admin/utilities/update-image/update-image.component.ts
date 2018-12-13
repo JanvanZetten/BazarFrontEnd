@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ImageService} from '../../../shared/services/image-service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ImageUrl} from '../../../shared/model/ImageUrl';
 import {AlertComponent} from 'ngx-bootstrap';
+import {AlertMessageComponent} from '../../../shared/alert-message/alert-message.component';
 
 @Component({
   selector: 'app-update-image',
@@ -11,6 +12,7 @@ import {AlertComponent} from 'ngx-bootstrap';
 })
 export class UpdateImageComponent implements OnInit {
 
+  @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
   imageForm = new FormGroup({
     id: new FormControl(''),
     url: new FormControl('')
@@ -36,25 +38,10 @@ export class UpdateImageComponent implements OnInit {
     imageUrl.url = imageForm.url;
 
     this.imageServ.updateImage(imageUrl).subscribe(m => {
-      this.alerts.push({
-        class: "text-center",
-        type: "success",
-        msgStrong: "Succes!",
-        msg: "Billede nyt billede til billede med id på " + m.id + ".",
-        timeout: 5000
-      });
-    }, e => {
-      this.alerts.push({
-        class: "text-center",
-        type: "danger",
-        msgStrong: "Fejl!",
-        msg: e.error,
-        timeout: 5000
-      });
-    });
-  }
+      this.alertMessage.pushMessage("Success", "Succes!", "Billede nyt billede til billede med id på " + m.id + ".");
 
-  onAlertClosed(dismissedAlert: AlertComponent): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+    }, e => {
+      this.alertMessage.pushError("danger", "Fejl!", e);
+    });
   }
 }
