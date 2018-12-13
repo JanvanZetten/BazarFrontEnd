@@ -1,0 +1,29 @@
+<div  style="width: 400px;">
+  <form [formGroup]="imageForm" (ngSubmit)="update()">
+
+    <h4>Opdater billeder på siden</h4>
+    <div class="form-group">
+      <label>
+        Billede:
+      </label>
+      <select class="form-control" type="number" formControlName="id">
+        <!-- HERE GOES NEW IMAGE OPTIONS -->
+        <option value="1">Hal 1</option>
+        <option value="2">Hal 2</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Billed URL:
+      </label>
+      <input class="form-control" type="string" placeholder="Indsæt direkte link til billede" formControlName="url">
+      <small class="form-text text-muted">
+        Kun billeder af følgende filtyper er tilladt: png, jpg, jpeg og gif
+      </small>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Opdater billede</button>
+  </form>
+  <app-alert-message #alertMessage></app-alert-message>
+</div>

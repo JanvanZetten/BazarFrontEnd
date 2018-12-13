@@ -35,6 +35,8 @@
         </a>
       </li>
 
+      <div *ngIf="ifAdministrator()" class="vl d-none d-md-block"></div>
+      <div *ngIf="ifAdministrator()" class="hl d-md-none"></div>
 
       <li *ngIf="ifAdministrator()" class="nav-item">
         <a class="nav-link" routerLink="/admin/booths" (click)="isCollapsed = true" routerLinkActive="active">
@@ -46,6 +48,13 @@
       <li *ngIf="ifAdministrator()" class="nav-item">
         <a class="nav-link" routerLink="/admin/users" (click)="isCollapsed = true" routerLinkActive="active">
           Brugere
+        </a>
+      </li>
+
+
+      <li *ngIf="ifAdministrator()" class="nav-item">
+        <a class="nav-link" routerLink="/admin/utilities" (click)="isCollapsed = true" routerLinkActive="active">
+          Opsætning
         </a>
       </li>
     <!--More page links can be added here...-->
