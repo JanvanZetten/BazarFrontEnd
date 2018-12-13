@@ -17,7 +17,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LogService {
-  Url = environment.apiUrl + '/booths';
+  Url = environment.apiUrl + '/logs';
 
   constructor(private http: HttpClient, private authenticationService: LoginService) { }
 
