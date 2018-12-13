@@ -46,9 +46,9 @@ export class ImageService {
     return this.http.post<ImageUrl>(this.Url, imageUrl, httpOptions);
   }
 
-  updateImage(id: number): Observable<ImageUrl> {
+  updateImage(imageUrl: ImageUrl): Observable<ImageUrl> {
     this.setOptions();
-    return this.http.put<ImageUrl>(this.Url + '/' + id, httpOptions);
+    return this.http.put<ImageUrl>(this.Url + '/' + imageUrl.id, imageUrl, httpOptions);
   }
 
   deleteImage(id: number): Observable<ImageUrl> {

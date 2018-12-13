@@ -1,0 +1,30 @@
+<div  style="width: 400px;">
+  <form [formGroup]="imageForm" (ngSubmit)="update()">
+
+    Opdater billeder på siden
+    <div class="form-group">
+      <label>
+        Billed id:
+      </label>
+      <input class="form-control" type="number" placeholder="Billed id" formControlName="id">
+      <small class="form-text text-muted">
+        Spørg administrator for id til hvert billede hvis du ikke kender til dette.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Billed URL:
+      </label>
+      <input class="form-control" type="string" placeholder="Indsæt direkte link til billede" formControlName="url">
+      <small class="form-text text-muted">
+        Kun billeder af følgende filtyper er tilladt: | .png | .jpg | .jpeg | .gif |
+      </small>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Opdater billede</button>
+  </form>
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onAlertClosed(alert)" [dismissible]="true"><strong>{{ alert.msgStrong }}</strong> {{ alert.msg }}</alert>
+  </div>
+</div>

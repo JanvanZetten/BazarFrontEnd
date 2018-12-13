@@ -33,6 +33,8 @@ import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.componen
 import { UserAddComponent } from './admin/user/user-add/user-add.component';
 import { UserEditComponent } from './admin/user/user-edit/user-edit.component';
 import { ImageForBookingComponent } from './image-for-booking/image-for-booking.component';
+import { UpdateImageComponent } from './admin/utilities/update-image/update-image.component';
+import { UtilitiesMainComponent } from './admin/utilities/utilities-main/utilities-main.component';
 
 
 export function jwtTokenGetter() {
@@ -60,7 +62,9 @@ export function jwtTokenGetter() {
     EditBoothComponent,
     UserAddComponent,
     UserEditComponent,
-    ImageForBookingComponent
+    ImageForBookingComponent,
+    UpdateImageComponent,
+    UtilitiesMainComponent
   ],
   imports: [
     BrowserModule,
