@@ -25,8 +25,8 @@ export class ResetService {
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
   }
 
-  resetSystem(): Observable<String>{
+  resetSystem(): Observable<any>{
     this.setOptions();
-    return this.http.put<String>(this.Url, "\"" + this.authenticationService.getToken() + "\"", httpOptions);
+    return this.http.put<any>(this.Url, "\"" + this.authenticationService.getToken() + "\"", httpOptions);
   }
 }

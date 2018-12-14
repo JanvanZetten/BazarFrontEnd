@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RestartComponent } from './restart.component';
+import { RestartComponent } from './reset.component';
 
 describe('RestartComponent', () => {
   let component: RestartComponent;
