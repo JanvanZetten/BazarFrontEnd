@@ -31,18 +31,22 @@ export class AlertMessageComponent implements OnInit {
   }
 
   pushError(alertType: string, strongMessage: string, error: any, time: number = 5000): void {
-    if(error.status == 0 && error.error instanceof ProgressEvent)
+    let defaultMessage: string = "Der skete en fejl";
+    let isErrorEmpty: boolean = error.error instanceof ProgressEvent || error === null || error.error === null;
+
+    if(error.status === 0 && isErrorEmpty)
     {
-      error.error = "Der skete en fejl, intet svar fra databasen";
+      error.error = defaultMessage + ", intet svar fra databasen";
     }
-    else if(error.status == 401 && error.error instanceof ProgressEvent)
+    else if(error.status === 401 && isErrorEmpty)
     {
-      error.error = "Du har ikke tilladelse";
+      error.error = defaultMessage + ", du har ikke tilstækkelig tilladelse";
     }
-    else if(error.error instanceof ProgressEvent)
+    else if(isErrorEmpty)
     {
-      error.error = "Der skete en fejl";
+      error.error = defaultMessage;
     }
+
     this.pushMessage(alertType, strongMessage, error.error, time);
   }
 
