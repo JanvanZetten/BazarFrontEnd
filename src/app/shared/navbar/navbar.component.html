@@ -57,6 +57,12 @@
           Opsætning
         </a>
       </li>
+
+      <li *ngIf="ifAdministrator()" class="nav-item">
+        <a class="nav-link" routerLink="/admin/log" (click)="isCollapsed = true" routerLinkActive="active">
+          Log
+        </a>
+      </li>
     <!--More page links can be added here...-->
 
 

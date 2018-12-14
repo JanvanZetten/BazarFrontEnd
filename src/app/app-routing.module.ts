@@ -13,6 +13,7 @@ import {LoginService as AuthGuard} from './shared/services/login.service';
 import {EditBoothComponent} from "./admin/booth/edit-booth/edit-booth.component";
 import {UserAddComponent} from "./admin/user/user-add/user-add.component";
 import {UserEditComponent} from "./admin/user/user-edit/user-edit.component";
+import {LogComponent} from "./admin/log/log.component";
 import {UtilitiesMainComponent} from './admin/utilities/utilities-main/utilities-main.component';
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     {path: 'unauthorized', component:UnauthorizedComponent},
     {path: 'admin/booths/edit/:id', component: EditBoothComponent, canActivate: [AdminGuard]},
     {path: 'admin/users/edit/:id', component: UserEditComponent, canActivate: [AdminGuard]},
+    {path: 'admin/log', component: LogComponent, canActivate: [AdminGuard]},
     {path: 'admin/utilities', component: UtilitiesMainComponent, canActivate: [AdminGuard]}
     ];
 
