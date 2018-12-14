@@ -13,7 +13,7 @@
   <tr *ngFor="let logItem of logItems">
     <th scope="row">{{logItem.id}}</th>
     <td>{{logItem.message}}</td>
-    <td>#{{logItem.user.id}}, {{logItem.user.username}}</td>
+    <td>#{{logItem.user.id}} {{logItem.user.username}}</td>
     <td>{{logItem.date | date: 'medium'}}</td>
   </tr>
 
