@@ -15,12 +15,12 @@ export class RestartComponent implements OnInit {
 
   ngOnInit()
   {
-    this.modalTitle = "Genstart standernes lejere";
-    this.modalBody = "Er du sikker på, at du vil fjerne lejere?"
+    this.modalTitle = "Nulstil systemet";
+    this.modalBody = "Er du sikker på at du vil nulstille?"
   }
 
   /**
-   * Triggers event deleted with an observable from the booth service for deleting the booth.
+   * Triggers event restarted with an observable from the restart service for restarting system.
    */
   restart() {
     // Metoden nedenunder skal udfyldes med restart all booths, fra service klassen
