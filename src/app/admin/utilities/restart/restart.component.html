@@ -1,0 +1,10 @@
+<!-- The button for resetting system. On click: Runs function open() in app-confirmation-modal, using the confirmation tag. -->
+<div class="mx-2" style="min-width: 100px; width: 400px; max-width: 400px;">
+<h4>Genstart standernes stand</h4>
+<div class="mt-4">
+  <p class="text-danger"><small><b>Vær opmærksom på, at dette fjerner standernes lejere!</b></small></p>
+      <button class="btn btn-danger"(click)="confirmation.open()">Genstart standernes stand</button>
+</div>
+<!-- Adds the confirmation modal to the view. Passing the modal title and body. On confirmed event the delete function is executed. -->
+<app-confirmation-modal #confirmation [title]="modalTitle" [body]="modalBody" (confirmed)="restart()"></app-confirmation-modal>
+</div>
