@@ -1,6 +1,8 @@
 <!-- The button for deleting a booth. On click: Runs function open() in app-confirmation-modal, using the confirmation tag. -->
-<div class="mt-5" style="width:300px;margin:auto">
-      <button class="btn btn-danger card-text"(click)="confirmation.open()">Genstart standernes stand</button>
+<h4>Genstart standernes stand</h4>
+<div class="mt-4" style="width:300px;">
+  <p class="text-danger"><small><b>Vær opmærksom på, at dette fjerner standernes lejere!</b></small></p>
+      <button class="btn btn-danger"(click)="confirmation.open()">Genstart standernes stand</button>
 </div>
 <!-- Adds the confirmation modal to the view. Passing the modal title and body. On confirmed event the delete function is executed. -->
 <app-confirmation-modal #confirmation [title]="modalTitle" [body]="modalBody" (confirmed)="restart()"></app-confirmation-modal>
