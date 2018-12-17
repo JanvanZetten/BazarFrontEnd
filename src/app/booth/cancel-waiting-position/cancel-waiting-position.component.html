@@ -1,0 +1,3 @@
+<button class="btn btn-primary" (click)="confirmation.open()">Annuller position</button>
+
+<app-confirmation-modal #confirmation [title]="modalTitle" [body]="modalBody" (confirmed)="cancel()"></app-confirmation-modal>

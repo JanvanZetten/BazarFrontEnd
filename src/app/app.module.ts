@@ -16,11 +16,11 @@ import { LoginComponent } from './Login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BookBoothComponent } from './booth/book-booth/book-booth.component';
-import { ShowReservationBoothComponent } from './booth/show-reservation-booth/show-reservation-booth.component';
+import { CancelReservationBoothComponent } from './booth/cancel-reservation-booth/cancel-reservation-booth.component';
 import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show-waiting-position.component';
+import { CancelWaitingPositionComponent } from './booth/cancel-waiting-position/cancel-waiting-position.component';
 import { AddBoothComponent } from './admin/booth/add-booth/add-booth.component';
 import { BoothListComponent } from './admin/booth/booth-list/booth-list.component';
 import { UserListComponent } from './admin/user/user-list/user-list.component';
@@ -50,11 +50,11 @@ export function jwtTokenGetter() {
     NavbarComponent,
     LoginComponent,
     BookBoothComponent,
-    ShowReservationBoothComponent,
+    CancelReservationBoothComponent,
     BookingComponent,
     HomeComponent,
     CreateUserComponent,
-    ShowWaitingPositionComponent,
+    CancelWaitingPositionComponent,
     AddBoothComponent,
     BoothListComponent,
     UserListComponent,

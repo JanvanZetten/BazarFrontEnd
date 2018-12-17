@@ -7,7 +7,7 @@
         <div class="card-body">
           <h5 class="card-title">Stand nummer: {{booth.id}}</h5>
           <p class="card-text"></p>
-          <app-show-reservation-booth [boothId]="booth.id"></app-show-reservation-booth>
+          <app-cancel-reservation-booth [boothId]="booth.id" (canceled)="alertHandler($event)"></app-cancel-reservation-booth>
         </div>
       </div>
     </li>
@@ -18,8 +18,10 @@
     <h3>
     Der er ingen reservation. Men du er nummer {{numberInWaitingList}} i køen.
     </h3>
-    <app-show-waiting-position></app-show-waiting-position>
+    <app-cancel-waiting-position (canceled)="alertHandler($event)"></app-cancel-waiting-position>
   </div>
 
-  <app-alert-message #alertMessage></app-alert-message>
+  <div class="mt-3">
+    <app-alert-message #alertMessage></app-alert-message>
+  </div>
 </div>
