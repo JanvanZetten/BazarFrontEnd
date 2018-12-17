@@ -35,7 +35,7 @@ export class EditBoothComponent implements OnInit {
             {booker: this.booth.booker.id}
           )
         }
-      }
+      }, error => {}
     );
   }
 

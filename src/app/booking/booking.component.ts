@@ -27,7 +27,7 @@ export class BookingComponent implements OnInit {
       error => {
         this.boothService.getUsersPositionInWaitingList().subscribe(
           waitingNum => {this.numberInWaitingList = waitingNum},
-          );
+          error2 => {});
       });
   }
 
