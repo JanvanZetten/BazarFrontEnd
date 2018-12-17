@@ -3,14 +3,15 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
-import {CanActivate} from '@angular/router';
+import {CanActivate, Router} from '@angular/router';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService implements  CanActivate{
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private jwtHelper:JwtHelperService, private router:Router) {}
 
   canActivate():boolean
   {
@@ -18,6 +19,8 @@ export class LoginService implements  CanActivate{
     {
       return true;
     }
+    // not logged in so redirect to login page
+    this.router.navigate(['/login']);
     return false;
   }
 
@@ -36,6 +39,18 @@ export class LoginService implements  CanActivate{
           return false;
         }
       }));
+  }
+
+  TokenExpired(): Boolean
+  {
+      if(this.getToken())
+      {
+        if(this.jwtHelper.isTokenExpired(this.getToken()))
+        {
+          return true;
+        }
+      }
+      return false;
   }
 
   getToken(): string {
