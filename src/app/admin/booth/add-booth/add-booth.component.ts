@@ -19,6 +19,7 @@ export class AddBoothComponent implements OnInit {
     booker: new FormControl('')
   });
   maxAmountOfBoothsAllowed = 1000;
+  isAdding: boolean = false;
 
   constructor(private boothService: BoothService) { }
 
@@ -38,11 +39,14 @@ export class AddBoothComponent implements OnInit {
         booth.booker = user;
       }
 
+      this.isAdding = true;
       this.boothService.addBooth(boothForm.amount, booth).subscribe(
         m => {
+          this.isAdding = false;
           this.added.emit();
           this.alertMessage.pushMessage("success", "Succes!", "Tilføjede " + m.length + " " + (m.length > 1 ? "stande" : "stand") + " til systemet");
           }, error => {
+          this.isAdding = false;
           this.added.emit();
           this.alertMessage.pushError("danger", "Fejl!", error);
         });
