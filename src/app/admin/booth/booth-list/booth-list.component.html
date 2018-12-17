@@ -1,4 +1,4 @@
-<app-add-booth></app-add-booth>
+<app-add-booth (added)="refresh()"></app-add-booth>
 <br>
 <table *ngIf="booths" class="table table-striped table-hover table-bordered table-small-coloum">
   <thead>
