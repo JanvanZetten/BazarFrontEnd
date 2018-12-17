@@ -13,17 +13,12 @@ import {AlertMessageComponent} from "../../shared/alert-message/alert-message.co
 export class ShowReservationBoothComponent implements OnInit {
   @Input() public boothId;
   @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
-  boothBooked: Booth[];
   modalRef: BsModalRef;
 
   constructor(private boothService: BoothService, private modalService: BsModalService) {
   }
 
   ngOnInit() {
-    this.boothService.getUsersBooking().subscribe(booth => this.boothBooked = booth,
-        error => {
-          this.alertMessage.pushError("danger", "Fejl!", error)
-        });
   }
 
   openModal(template: TemplateRef<any>) {

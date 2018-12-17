@@ -3,10 +3,10 @@
     <div class="card-deck">
     <li class="cardList" *ngFor="let booth of booths" style="list-style-type: none;" >
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="http://localhost:4200/assets/img/UnnaturalOwl.png" alt="Card image cap">
+
         <div class="card-body">
           <h5 class="card-title">Stand nummer: {{booth.id}}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text"></p>
           <app-show-reservation-booth [boothId]="booth.id"></app-show-reservation-booth>
         </div>
       </div>
