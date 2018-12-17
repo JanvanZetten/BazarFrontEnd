@@ -33,7 +33,7 @@ export class RegisterService {
         if (newUsername) {
           this.loginService.login(username, password).subscribe(value => {
             return value;
-          })
+          }, error => {})
         } else {
           return false;
         }
