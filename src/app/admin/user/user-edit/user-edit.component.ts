@@ -34,7 +34,7 @@ export class UserEditComponent implements OnInit {
             username: user.username,
             isAdmin: user.isAdmin
         })
-      }
+      }, error => {}
     );
   }
 

@@ -1,1 +1,22 @@
-<app-update-image></app-update-image>
+<div class="d-flex justify-content-center mx-auto">
+  <div class="row text-center mx-auto">
+
+    <div class="col d-inline-flex mx-auto">
+      <div class="shadow mx-1 pb-1 mx-auto">
+        <app-update-image class="text-left"></app-update-image>
+      </div>
+    </div>
+
+    <div class="col-lg-6 mt-lg-0 mt-3 d-inline-flex mx-auto">
+      <div class="shadow mx-1 pb-4 mx-auto">
+        <app-reset (restarted)="alertHandler($event)" class="text-left"></app-reset>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="mt-3">
+  <app-alert-message #alertMessage></app-alert-message>
+</div>
+
+

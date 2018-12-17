@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {BoothService} from '../../../shared/services/booth.service';
 import {Booth} from '../../../shared/model/booth';
@@ -13,11 +13,13 @@ import {AlertMessageComponent} from "../../../shared/alert-message/alert-message
 })
 export class AddBoothComponent implements OnInit {
   @ViewChild('alertMessage') alertMessage: AlertMessageComponent;
+  @Output() added = new EventEmitter();
   boothForm = new FormGroup({
     amount: new FormControl(1),
     booker: new FormControl('')
   });
   maxAmountOfBoothsAllowed = 1000;
+  isAdding: boolean = false;
 
   constructor(private boothService: BoothService) { }
 
@@ -37,10 +39,15 @@ export class AddBoothComponent implements OnInit {
         booth.booker = user;
       }
 
+      this.isAdding = true;
       this.boothService.addBooth(boothForm.amount, booth).subscribe(
         m => {
+          this.isAdding = false;
+          this.added.emit();
           this.alertMessage.pushMessage("success", "Succes!", "Tilføjede " + m.length + " " + (m.length > 1 ? "stande" : "stand") + " til systemet");
           }, error => {
+          this.isAdding = false;
+          this.added.emit();
           this.alertMessage.pushError("danger", "Fejl!", error);
         });
     }

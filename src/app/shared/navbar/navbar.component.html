@@ -57,14 +57,20 @@
           Opsætning
         </a>
       </li>
+
+      <li *ngIf="ifAdministrator()" class="nav-item">
+        <a class="nav-link" routerLink="/admin/log" (click)="isCollapsed = true" routerLinkActive="active">
+          Log
+        </a>
+      </li>
     <!--More page links can be added here...-->
 
 
     </ul>
 
     
-    <button class="btn btn-outline-light my-2 my-sm-0" (click)="isCollapsed = true" routerLink="/login">
-      Login
+    <button class="btn btn-outline-light my-2 my-sm-0" (click)="isCollapsed = true; Logout()">
+      {{loginStatus}}
     </button>
 
   </div>

@@ -19,11 +19,7 @@
 
     <button type="submit" class="btn btn-primary mb-2">Opret bruger</button>
 
-    <app-alert-message #alertMessage></app-alert-message>
-
-    <alert class="text-center" *ngIf="error" type="danger">
-      <strong>Det var ikke muligt at oprette din bruger.</strong> {{errorMessage}}
-    </alert>
+    <div class="mt-3">   <app-alert-message #alertMessage></app-alert-message> </div>
 
   </form>
 

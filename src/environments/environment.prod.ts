@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'INSERT THE AZURE LINK IN THE ENVIRONMENT PRODUCTION'
+  apiUrl: 'https://hoejerbazar.azurewebsites.net/api'
 };

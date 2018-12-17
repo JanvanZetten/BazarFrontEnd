@@ -16,11 +16,11 @@ import { LoginComponent } from './Login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BookBoothComponent } from './booth/book-booth/book-booth.component';
-import { ShowReservationBoothComponent } from './booth/show-reservation-booth/show-reservation-booth.component';
+import { CancelReservationBoothComponent } from './booth/cancel-reservation-booth/cancel-reservation-booth.component';
 import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { ShowWaitingPositionComponent } from './booth/show-waiting-position/show-waiting-position.component';
+import { CancelWaitingPositionComponent } from './booth/cancel-waiting-position/cancel-waiting-position.component';
 import { AddBoothComponent } from './admin/booth/add-booth/add-booth.component';
 import { BoothListComponent } from './admin/booth/booth-list/booth-list.component';
 import { UserListComponent } from './admin/user/user-list/user-list.component';
@@ -33,9 +33,11 @@ import { EditBoothComponent } from './admin/booth/edit-booth/edit-booth.componen
 import { UserAddComponent } from './admin/user/user-add/user-add.component';
 import { UserEditComponent } from './admin/user/user-edit/user-edit.component';
 import { ImageForBookingComponent } from './image-for-booking/image-for-booking.component';
+import { LogComponent } from './admin/log/log.component';
 import { UpdateImageComponent } from './admin/utilities/update-image/update-image.component';
 import { UtilitiesMainComponent } from './admin/utilities/utilities-main/utilities-main.component';
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
+import { ResetComponent } from './admin/utilities/reset/reset.component';
 
 
 export function jwtTokenGetter() {
@@ -48,11 +50,11 @@ export function jwtTokenGetter() {
     NavbarComponent,
     LoginComponent,
     BookBoothComponent,
-    ShowReservationBoothComponent,
+    CancelReservationBoothComponent,
     BookingComponent,
     HomeComponent,
     CreateUserComponent,
-    ShowWaitingPositionComponent,
+    CancelWaitingPositionComponent,
     AddBoothComponent,
     BoothListComponent,
     UserListComponent,
@@ -64,9 +66,11 @@ export function jwtTokenGetter() {
     UserAddComponent,
     UserEditComponent,
     ImageForBookingComponent,
+    LogComponent,
     UpdateImageComponent,
     UtilitiesMainComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,

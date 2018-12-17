@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {BoothService} from '../../shared/services/booth.service';
 import {LoginService} from '../../shared/services/login.service';
 import {Booth} from '../../shared/model/booth';
-import {AlertComponent} from "ngx-bootstrap";
 import {Router} from "@angular/router";
 import {AlertMessageComponent} from "../../shared/alert-message/alert-message.component";
 
@@ -18,12 +17,12 @@ export class BookBoothComponent implements OnInit {
   boothsToBook: Booth[];
   loading = true;
   empty = true;
-  numberOfNonbookedBooths: number;
+  numberOfNonBookedBooths: number;
 
   constructor(private boothService: BoothService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
-    this.boothService.getAvalibleBoothsCount().subscribe(count => this.numberOfNonbookedBooths = count);
+    this.boothService.getAvalibleBoothsCount().subscribe(count => this.numberOfNonBookedBooths = count, error => {});
     this.booths = [];
     this.boothsToBook = [];
 

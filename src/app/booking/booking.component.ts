@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {BoothService} from '../shared/services/booth.service';
 import {Booth} from '../shared/model/booth';
 import {AlertMessageComponent} from "../shared/alert-message/alert-message.component";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-booking',
@@ -16,15 +17,27 @@ export class BookingComponent implements OnInit {
   constructor(private boothService: BoothService) { }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
+    this.booths = undefined;
+    this.numberInWaitingList = -1;
     this.boothService.getUsersBooking().subscribe(booths => {this.booths = booths},
       error => {
-        this.alertMessage.pushError("danger", "Fejl!", error)
+        this.boothService.getUsersPositionInWaitingList().subscribe(
+          waitingNum => {this.numberInWaitingList = waitingNum},
+          error2 => {});
       });
+  }
 
-    this.boothService.getUsersPositionInWaitingList().subscribe(
-      waitingNum => {this.numberInWaitingList = waitingNum},
-      error => {
-        this.alertMessage.pushError("danger", "Fejl!", error)
-      });
+  alertHandler(obs: Observable<any>){
+    obs.subscribe(result => {
+      this.refresh();
+      this.alertMessage.pushMessage("success", "Succes!", "Handling blev udført");
+    }, error => {
+      this.refresh();
+      this.alertMessage.pushError("danger", "Fejl!", error);
+    })
   }
 }
