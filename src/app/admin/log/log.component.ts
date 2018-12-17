@@ -21,7 +21,12 @@ export class LogComponent implements OnInit {
 
   private getAllLogs() {
     this.logService.getLogItems().subscribe(
-      ls => this.logItems = ls,
+      ls => {this.logItems = ls; this.logItems.sort((itemA, itemB) =>  {
+      if(itemA.date > itemB.date){ return -1;};
+      if(itemA.date < itemB.date){ return 1;};
+      return 0;
+      }
+      )},
       error => this.alertMessage.pushError("danger", "Fejl!", error)
     );
   }
