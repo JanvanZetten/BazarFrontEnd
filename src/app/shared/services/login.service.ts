@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
-import {CanActivate} from '@angular/router';
+import {CanActivate, Router} from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
@@ -11,7 +11,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 })
 export class LoginService implements  CanActivate{
 
-  constructor(private http: HttpClient, private jwtHelper:JwtHelperService) {}
+  constructor(private http: HttpClient, private jwtHelper:JwtHelperService, private router:Router) {}
 
   canActivate():boolean
   {
@@ -19,6 +19,8 @@ export class LoginService implements  CanActivate{
     {
       return true;
     }
+    // not logged in so redirect to login page
+    this.router.navigate(['/login']);
     return false;
   }
 
