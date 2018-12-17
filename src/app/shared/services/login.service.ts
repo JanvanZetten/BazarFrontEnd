@@ -4,13 +4,14 @@ import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
 import {CanActivate} from '@angular/router';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService implements  CanActivate{
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private jwtHelper:JwtHelperService) {}
 
   canActivate():boolean
   {
@@ -36,6 +37,18 @@ export class LoginService implements  CanActivate{
           return false;
         }
       }));
+  }
+
+  TokenExpired(): Boolean
+  {
+      if(this.getToken())
+      {
+        if(this.jwtHelper.isTokenExpired(this.getToken()))
+        {
+          return true;
+        }
+      }
+      return false;
   }
 
   getToken(): string {

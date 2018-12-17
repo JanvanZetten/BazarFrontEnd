@@ -69,8 +69,8 @@
     </ul>
 
     
-    <button class="btn btn-outline-light my-2 my-sm-0" (click)="isCollapsed = true" routerLink="/login">
-      Login
+    <button class="btn btn-outline-light my-2 my-sm-0" (click)="isCollapsed = true; Logout()">
+      {{loginStatus}}
     </button>
 
   </div>
