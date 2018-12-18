@@ -13,7 +13,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class NavbarComponent implements OnInit {
 
   isCollapsed = true;
-  loginStatus:string;
+  loginStatus: string;
 
   constructor(private loginService: LoginService,
               private adminGuardService: AdminGuardService,
@@ -21,9 +21,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit()
   {
+    this.refreshLoginStatus();
+  }
+
+  refreshLoginStatus(){
     if(this.getTokenExists())
     {
-      this.loginStatus = 'Log Out'
+      this.loginStatus = 'Log out'
     }
     else
     {
