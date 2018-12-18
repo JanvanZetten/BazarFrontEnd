@@ -1,6 +1,7 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
 import {CanActivate, Router} from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
