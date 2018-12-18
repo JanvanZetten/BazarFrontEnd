@@ -70,6 +70,7 @@ export class LoginService implements  CanActivate{
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.getLoggedIn.emit(false);
+    this.router.navigate(['/']);
   }
 
 }
