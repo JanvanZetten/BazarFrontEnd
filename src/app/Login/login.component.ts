@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   public Login(): void {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
-    this.loginService.login(username, password).subscribe(sucess => {this.router.navigate(['/']); window.location.reload(); },
+    this.loginService.login(username, password).subscribe(sucess => {this.router.navigate(['/']); },
       error => this.alertMessage.pushError("danger", "Fejl!", error));
   }
 
