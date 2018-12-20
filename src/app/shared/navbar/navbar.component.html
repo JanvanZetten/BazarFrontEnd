@@ -29,36 +29,36 @@
         </a>
       </li>
 
-      <li *ngIf="getTokenExists()" class="nav-item">
+      <li *ngIf="isLoggedIn && getTokenExists()" class="nav-item">
         <a class="nav-link" routerLink="/user" (click)="isCollapsed = true" routerLinkActive="active">
           Profil
         </a>
       </li>
 
-      <div *ngIf="ifAdministrator()" class="vl d-none d-md-block"></div>
-      <div *ngIf="ifAdministrator()" class="hl d-md-none"></div>
+      <div *ngIf="isLoggedIn && ifAdministrator()" class="vl d-none d-md-block"></div>
+      <div *ngIf="isLoggedIn && ifAdministrator()" class="hl d-md-none"></div>
 
-      <li *ngIf="ifAdministrator()" class="nav-item">
+      <li *ngIf="isLoggedIn && ifAdministrator()" class="nav-item">
         <a class="nav-link" routerLink="/admin/booths" (click)="isCollapsed = true" routerLinkActive="active">
         Stande
         </a>
       </li>
 
 
-      <li *ngIf="ifAdministrator()" class="nav-item">
+      <li *ngIf="isLoggedIn && ifAdministrator()" class="nav-item">
         <a class="nav-link" routerLink="/admin/users" (click)="isCollapsed = true" routerLinkActive="active">
           Brugere
         </a>
       </li>
 
 
-      <li *ngIf="ifAdministrator()" class="nav-item">
+      <li *ngIf="isLoggedIn && ifAdministrator()" class="nav-item">
         <a class="nav-link" routerLink="/admin/utilities" (click)="isCollapsed = true" routerLinkActive="active">
           Opsætning
         </a>
       </li>
 
-      <li *ngIf="ifAdministrator()" class="nav-item">
+      <li *ngIf="isLoggedIn && ifAdministrator()" class="nav-item">
         <a class="nav-link" routerLink="/admin/log" (click)="isCollapsed = true" routerLinkActive="active">
           Log
         </a>
@@ -68,9 +68,12 @@
 
     </ul>
 
-    
-    <button class="btn btn-outline-light my-2 my-sm-0" (click)="isCollapsed = true; Logout()">
-      {{loginStatus}}
+
+    <button *ngIf="isLoggedIn" class="btn btn-outline-light my-2 my-sm-0" (click)="Logout()">
+      Log ud
+    </button>
+    <button *ngIf="!isLoggedIn" class="btn btn-outline-light my-2 my-sm-0" (click)="Logout()">
+      Log ind
     </button>
 
   </div>

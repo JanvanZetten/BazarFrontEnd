@@ -13,22 +13,19 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class NavbarComponent implements OnInit {
 
   isCollapsed = true;
-  loginStatus:string;
+  isLoggedIn: boolean;
 
   constructor(private loginService: LoginService,
               private adminGuardService: AdminGuardService,
-              private router:Router) { }
+              private router:Router) {
+    this.isLoggedIn = this.getTokenExists();
+    this.loginService.getLoggedIn.subscribe(isLoggedIn => {
+      this.changeLoggedIn(isLoggedIn);
+    });
+  }
 
   ngOnInit()
   {
-    if(this.getTokenExists())
-    {
-      this.loginStatus = 'Log Out'
-    }
-    else
-    {
-      this.loginStatus = 'Login'
-    }
   }
 
   ifAdministrator()
@@ -41,7 +38,6 @@ export class NavbarComponent implements OnInit {
     if(this.loginService.getToken() && !this.loginService.TokenExpired())
     {
       this.loginService.logout();
-      this.loginStatus = 'Login'
     }
     else
     {
@@ -54,7 +50,11 @@ export class NavbarComponent implements OnInit {
   getTokenExists(): boolean {
     if (this.loginService.getToken())
       return true;
-    else return false;
+    else
+      return false;
   }
 
+  private changeLoggedIn(loggedIn: boolean): void {
+    this.isLoggedIn = loggedIn;
+  }
 }

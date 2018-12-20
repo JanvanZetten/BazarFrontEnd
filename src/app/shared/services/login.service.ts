@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
@@ -10,6 +10,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class LoginService implements  CanActivate{
+  @Output() getLoggedIn: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private http: HttpClient, private jwtHelper:JwtHelperService, private router:Router) {}
 
@@ -33,9 +34,11 @@ export class LoginService implements  CanActivate{
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
           // return true to indicate successful login
+          this.getLoggedIn.emit(true);
           return true;
         } else {
           // return false to indicate failed login
+          this.getLoggedIn.emit(false);
           return false;
         }
       }));
@@ -66,6 +69,8 @@ export class LoginService implements  CanActivate{
   logout(): void {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    this.getLoggedIn.emit(false);
+    this.router.navigate(['/']);
   }
 
 }
